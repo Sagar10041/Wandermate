@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Migrations.Operations;
 using Wandermate.Data;
+using Wandermate.Dtos.Hotels;
+using Wandermate.Mappers;
 
 
 namespace Wandermate.Controllers
@@ -22,7 +25,8 @@ namespace Wandermate.Controllers
         [HttpGet]
 
         public IActionResult GetAll(){
-            var hotels = _context.Hotels.ToList();
+            var hotels = _context.Hotels.ToList()
+            .Select(s=> s.ToHotelsDto());
             return Ok(hotels);
         }
 
@@ -35,9 +39,18 @@ namespace Wandermate.Controllers
             if(hotel== null){
                 return NotFound();
             } else{
-                return Ok(hotel);
+                return Ok(hotel.ToHotelsDto());
             }
 
+        }
+
+        [HttpPost]
+
+        public IActionResult Create([FromBody] CreateHotelsRequestDto hotelrqDto){
+            var hotelmodel = hotelrqDto.ToHotelRequestDto();
+            _context.Hotels.Add(hotelmodel);
+            _context.SaveChanges();
+            return CreatedAtAction(nameof(GetById),new {id=hotelmodel.HotelId},hotelmodel.ToHotelsDto());
         }
         
 
