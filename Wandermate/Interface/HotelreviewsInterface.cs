@@ -11,6 +11,7 @@ namespace Wandermate.Interface
         Task<List<HotelReviews>> GetAllAsync();
         Task<HotelReviews?> GetByIdAsync(int id);
         
+        Task< HotelReviews> CreateAsync(HotelReviews reviews);
     }
 
 }

@@ -16,6 +16,14 @@ namespace Wandermate.Repos
         {
             _context=context;
         }
+
+        public async Task<HotelReviews> CreateAsync(HotelReviews reviews)
+        {
+            await _context.HotelReviews.AddAsync(reviews );
+            await _context.SaveChangesAsync();
+            return reviews;
+        }
+
         public async Task<List<HotelReviews>> GetAllAsync()
         {
             return await _context.HotelReviews.ToListAsync();
@@ -25,6 +33,8 @@ namespace Wandermate.Repos
         {
             return await _context.HotelReviews.FindAsync(id);
         }
+
+        
 
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Wandermate.Data;
+using Wandermate.Dtos.HotelReviews;
 using Wandermate.Interface;
 using Wandermate.Mappers;
 
@@ -14,9 +15,11 @@ namespace Wandermate.Controllers
     public class HotelReviewsController : ControllerBase
 
     {   private readonly HotelreviewsInterface _contextrepo;
-        public HotelReviewsController(HotelreviewsInterface context)
+        private readonly HotelsInterface _hotels;
+        public HotelReviewsController(HotelreviewsInterface context, HotelsInterface hotels)
         {
             _contextrepo = context;
+            _hotels=hotels;
         }
 
         [HttpGet]
@@ -27,7 +30,7 @@ namespace Wandermate.Controllers
             return Ok(hotelreviewsdto);
         }
         
-        [HttpGet("{id:int}")]
+        [HttpGet("{id}")]
 
         public async Task <IActionResult> GetById([FromRoute] int id){
             var review = await _contextrepo.GetByIdAsync(id);
@@ -36,6 +39,18 @@ namespace Wandermate.Controllers
                 return NotFound();
             }
             return Ok(review.ToHotelReviewDto());
+        }
+
+        [HttpPost("{id}")]
+
+        public async Task<IActionResult> Create([FromRoute] int id, HotelReviewCreateDto revDto){
+
+            if (!await _hotels.HotelExists(id)){
+                return BadRequest("Hotel doesnot exist");
+            }
+            var review = revDto.ToReviewsCreate(id);
+            await _contextrepo.CreateAsync(review);
+            return CreatedAtAction(nameof(GetById), new {id = review.HotelId}, review.ToHotelReviewDto());
         }
     }
 }

@@ -17,7 +17,7 @@ namespace Wandermate.Mappers
                 Address=hotelmodel.Address,
                 City=hotelmodel.City,
                 Country=hotelmodel.Country,
-                HotelReviews = hotelmodel.HotelReviews.Select(c=>c.ToHotelReviewDto()).ToList()
+                HotelReviews=hotelmodel.HotelReviews.Select(c => c.ToHotelReviewDto()).ToList()
                 
             };
 

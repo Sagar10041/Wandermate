@@ -48,6 +48,11 @@ namespace Wandermate.Repos
             return await _context.Hotels.Include(c=>c.HotelReviews).FirstOrDefaultAsync(i => i.HotelId == id);
         }
 
+        public Task<bool> HotelExists(int id)
+        {
+            return _context.Hotels.AnyAsync(s=> s.HotelId == id);
+        }
+
         public async Task<Hotels?> UpdateAsync(int id, HotelsUpdateRequestDto updatehotel)
         {
             var hotel = await _context.Hotels.FirstOrDefaultAsync(x=> x.HotelId ==id);

@@ -7,6 +7,9 @@ namespace Wandermate.Dtos.HotelReviews
 {
     public class HotelReviewCreateDto
     {
-        
+        public int Rating { get; set; }
+
+        public string ReviewText { get; set; } =String.Empty;
+
     }
 }

@@ -19,5 +19,14 @@ namespace Wandermate.Mappers
 
             };
         }
+
+         public static HotelReviews ToReviewsCreate(this HotelReviewCreateDto review,int hotelId){
+            return new HotelReviews{
+                Rating= review.Rating,
+                ReviewText=review.ReviewText,
+                HotelId=hotelId
+
+            };
+        }
     }
 }
