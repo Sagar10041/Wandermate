@@ -10,7 +10,6 @@ namespace Wandermate.Dtos.HotelReviews
         public int ReviewId { get; set; }
 
         public int Rating { get; set; }
-        public string ReviewerName { get; set; } =String.Empty;
 
         public string ReviewText { get; set; } =String.Empty;
 

@@ -16,7 +16,8 @@ namespace Wandermate.Mappers
                 Name=hotelmodel.Name,
                 Address=hotelmodel.Address,
                 City=hotelmodel.City,
-                Country=hotelmodel.Country
+                Country=hotelmodel.Country,
+                HotelReviews = hotelmodel.HotelReviews.Select(c=>c.ToHotelReviewDto()).ToList()
                 
             };
 
@@ -28,9 +29,6 @@ namespace Wandermate.Mappers
                 Address=reqDto.Address,
                 City=reqDto.City,
                 Country=reqDto.Country
-
-
-
             };
         }
     }

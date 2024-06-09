@@ -136,3 +136,7 @@ E:\WebAPP\Wandermate\obj\Debug\net8.0\refint\Wandermate.dll
 E:\WebAPP\Wandermate\obj\Debug\net8.0\Wandermate.pdb
 E:\WebAPP\Wandermate\obj\Debug\net8.0\Wandermate.genruntimeconfig.cache
 E:\WebAPP\Wandermate\obj\Debug\net8.0\ref\Wandermate.dll
+E:\WebAPP\Wandermate\bin\Debug\net8.0\Microsoft.AspNetCore.JsonPatch.dll
+E:\WebAPP\Wandermate\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+E:\WebAPP\Wandermate\bin\Debug\net8.0\Newtonsoft.Json.dll
+E:\WebAPP\Wandermate\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll

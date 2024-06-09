@@ -34,9 +34,9 @@ namespace Wandermate.Migrations
                     ReviewId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Rating = table.Column<int>(type: "int", nullable: false),
-                    ReviewerName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ReviewText = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    HotelId = table.Column<int>(type: "int", nullable: true),
                     HotelsHotelId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>

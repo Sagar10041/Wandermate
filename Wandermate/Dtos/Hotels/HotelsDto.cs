@@ -19,6 +19,6 @@ namespace Wandermate.Dtos.Hotels
 
     public string Country { get; set; } = String.Empty;
 
-    // public List<HotelReviewDti> HotelReviews {get; set;}
+     public List<HotelReviewDti>? HotelReviews {get; set;}
     }
 }

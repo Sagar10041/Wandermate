@@ -12,7 +12,7 @@ using Wandermate.Data;
 namespace Wandermate.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240517010810_init")]
+    [Migration("20240609174533_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -36,6 +36,9 @@ namespace Wandermate.Migrations
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
+                    b.Property<int?>("HotelId")
+                        .HasColumnType("int");
+
                     b.Property<int?>("HotelsHotelId")
                         .HasColumnType("int");
 
@@ -43,10 +46,6 @@ namespace Wandermate.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("ReviewText")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ReviewerName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

@@ -40,12 +40,12 @@ namespace Wandermate.Repos
 
         public async Task<List<Hotels>> GetAllAsync()
         {
-            return await _context.Hotels.ToListAsync();
+            return await _context.Hotels.Include(c=>c.HotelReviews).ToListAsync();
         }
 
         public async Task<Hotels?> GetByIdAsync(int id)
         {
-            return await _context.Hotels.FindAsync(id);
+            return await _context.Hotels.Include(c=>c.HotelReviews).FirstOrDefaultAsync(i => i.HotelId == id);
         }
 
         public async Task<Hotels?> UpdateAsync(int id, HotelsUpdateRequestDto updatehotel)
