@@ -53,6 +53,36 @@ namespace Wandermate.Controllers
             return CreatedAtAction(nameof(GetById),new {id=hotelmodel.HotelId},hotelmodel.ToHotelsDto());
         }
         
+        [HttpPut]
 
+        [Route("{id:int}")]
+
+        public IActionResult Update([FromRoute] int id,[FromBody] HotelsUpdateRequestDto updatehotel){
+            var hotel=_context.Hotels.FirstOrDefault(x=> x.HotelId == id);
+            if(hotel == null){
+                return NotFound();
+            }
+                hotel.Name = updatehotel.Name;
+                hotel.City=updatehotel.City;
+                hotel.Address=updatehotel.Address;
+                hotel.Country=updatehotel.Country;
+
+             _context.SaveChanges();
+             return Ok(hotel.ToHotelsDto()); 
+        }
+
+        [HttpDelete]
+        [Route("{id:int}")]
+        public IActionResult Delete([FromRoute] int id){
+
+            var hotel = _context.Hotels.FirstOrDefault(x=> x.HotelId == id);
+            if (hotel == null){
+                return NotFound();
+
+            }
+            _context.Hotels.Remove(hotel);
+            _context.SaveChanges();
+            return NoContent();
+        }
     }
 }
