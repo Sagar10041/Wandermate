@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Wandermate")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a531ec643cc42915d48ab707f33b8bca69884559")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7732c35266760e72d835dafd88ff0f8bcf786170")]
 [assembly: System.Reflection.AssemblyProductAttribute("Wandermate")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Wandermate")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

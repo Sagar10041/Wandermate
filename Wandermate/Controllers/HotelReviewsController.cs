@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Wandermate.Data;
+using Wandermate.Interface;
+using Wandermate.Mappers;
 
 namespace Wandermate.Controllers
 {   
@@ -11,30 +13,19 @@ namespace Wandermate.Controllers
     [ApiController]
     public class HotelReviewsController : ControllerBase
 
-    {   private readonly ApplicationDbContext _context;
-        public HotelReviewsController(ApplicationDbContext context)
+    {   private readonly HotelreviewsInterface _contextrepo;
+        public HotelReviewsController(HotelreviewsInterface context)
         {
-            _context = context;
+            _contextrepo = context;
         }
 
         [HttpGet]
 
-        public IActionResult GetAll(){
-            var hotelreviews = _context.HotelReviews.ToList();
-            return Ok(hotelreviews);
+        public async Task<IActionResult> GetAll(){
+            var hotelreviews = await _contextrepo.GetAllAsync();
+            var hotelreviewsdto = hotelreviews.Select(s=>s.ToHotelReviewDto());
+            return Ok(hotelreviewsdto);
         }
-
-        //  public IActionResult GetById([FromRoute] int id){
-
-        //     var hotelreview = _context.HotelReviews.Find(id);
-
-        //     if(hotelreview== null){
-        //         return NotFound();
-        //     } else{
-        //         return Ok(hotelreview);
-        //     }
-
-        // }
         
     }
 }
