@@ -8,6 +8,7 @@ using Wandermate.Data;
 using Wandermate.Dtos.Hotels;
 using Wandermate.Mappers;
 using Microsoft.EntityFrameworkCore;
+using Wandermate.Interface;
 
 
 namespace Wandermate.Controllers
@@ -17,16 +18,17 @@ namespace Wandermate.Controllers
     public class HotelsController : ControllerBase
     {
          private readonly ApplicationDbContext _context;
-
-        public HotelsController(ApplicationDbContext context)
+        private readonly HotelsInterface _hotelsrepo;
+        public HotelsController(ApplicationDbContext context, HotelsInterface hotelsrepo)
         {
             _context = context;
+            _hotelsrepo= hotelsrepo;
         }
 
         [HttpGet]
 
         public async Task<IActionResult> GetAll(){
-            var hotels = await _context.Hotels.ToListAsync();
+            var hotels = await _hotelsrepo.GetAllAsync();
             var hoteldto= hotels.Select(s=> s.ToHotelsDto());
             return Ok(hoteldto);
         }
@@ -35,7 +37,7 @@ namespace Wandermate.Controllers
 
         public async Task <IActionResult> GetById([FromRoute] int id){
 
-            var hotel = await _context.Hotels.FindAsync(id);
+            var hotel = await _hotelsrepo.GetByIdAsync(id);
 
             if(hotel== null){
                 return NotFound();
@@ -49,8 +51,7 @@ namespace Wandermate.Controllers
 
         public async Task <IActionResult> Create([FromBody] CreateHotelsRequestDto hotelrqDto){
             var hotelmodel = hotelrqDto.ToHotelRequestDto();
-            await _context.Hotels.AddAsync(hotelmodel);
-            await _context.SaveChangesAsync();
+            await _hotelsrepo.CreateAsync(hotelmodel);
             return CreatedAtAction(nameof(GetById),new {id=hotelmodel.HotelId},hotelmodel.ToHotelsDto());
         }
         
@@ -59,16 +60,11 @@ namespace Wandermate.Controllers
         [Route("{id:int}")]
 
         public async Task <IActionResult> Update([FromRoute] int id,[FromBody] HotelsUpdateRequestDto updatehotel){
-            var hotel= await _context.Hotels.FirstOrDefaultAsync(x=> x.HotelId == id);
+            var hotel= await _hotelsrepo.UpdateAsync(id, updatehotel);
             if(hotel == null){
                 return NotFound();
             }
-                hotel.Name = updatehotel.Name;
-                hotel.City=updatehotel.City;
-                hotel.Address=updatehotel.Address;
-                hotel.Country=updatehotel.Country;
-
-             await _context.SaveChangesAsync();
+            
              return Ok(hotel.ToHotelsDto()); 
         }
 
@@ -76,13 +72,11 @@ namespace Wandermate.Controllers
         [Route("{id:int}")]
         public async Task <IActionResult> Delete([FromRoute] int id){
 
-            var hotel = await _context.Hotels.FirstOrDefaultAsync(x=> x.HotelId == id);
+            var hotel = await _hotelsrepo.DeleteAsync(id);
             if (hotel == null){
                 return NotFound();
 
             }
-            _context.Hotels.Remove(hotel);
-            await _context.SaveChangesAsync();
             return NoContent();
         }
     }
