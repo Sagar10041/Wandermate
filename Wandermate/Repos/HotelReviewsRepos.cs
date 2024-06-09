@@ -20,5 +20,11 @@ namespace Wandermate.Repos
         {
             return await _context.HotelReviews.ToListAsync();
         }
+
+        public async Task<HotelReviews?> GetByIdAsync(int id)
+        {
+            return await _context.HotelReviews.FindAsync(id);
+        }
+
     }
 }

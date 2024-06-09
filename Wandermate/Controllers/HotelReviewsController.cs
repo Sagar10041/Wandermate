@@ -27,5 +27,15 @@ namespace Wandermate.Controllers
             return Ok(hotelreviewsdto);
         }
         
+        [HttpGet("{id:int}")]
+
+        public async Task <IActionResult> GetById([FromRoute] int id){
+            var review = await _contextrepo.GetByIdAsync(id);
+
+            if (review == null){
+                return NotFound();
+            }
+            return Ok(review.ToHotelReviewDto());
+        }
     }
 }

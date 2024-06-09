@@ -9,5 +9,8 @@ namespace Wandermate.Interface
     public interface HotelreviewsInterface
     {
         Task<List<HotelReviews>> GetAllAsync();
+        Task<HotelReviews?> GetByIdAsync(int id);
+        
     }
+
 }
