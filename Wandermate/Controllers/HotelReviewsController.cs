@@ -52,5 +52,29 @@ namespace Wandermate.Controllers
             await _contextrepo.CreateAsync(review);
             return CreatedAtAction(nameof(GetById), new {id = review.HotelId}, review.ToHotelReviewDto());
         }
+
+        [HttpPut]
+        [Route("{id}")]
+        public async Task<IActionResult> Update([FromRoute] int id, [FromBody] HotelreviewsUpdateDto updatereviews){
+            var review = await _contextrepo.UpdateAsync(id, updatereviews.ToReviewsUpdate());
+            if(review == null){
+                return NotFound("Hotel not found");
+            }
+            return Ok(review.ToHotelReviewDto());
+
+        }
+
+        [HttpDelete]
+        [Route("{id:int}")]
+        public async Task <IActionResult> Delete([FromRoute] int id){
+
+            var hotel = await _contextrepo.DeleteAsync(id);
+            if (hotel == null){
+                return NotFound();
+
+            }
+            return NoContent();
+        }
+
     }
 }
