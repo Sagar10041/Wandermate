@@ -7,6 +7,7 @@ using Wandermate.Data;
 using Wandermate.Interface;
 using Wandermate.Models;
 using Wandermate.Repos;
+using Wandermate.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -63,6 +64,7 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddScoped<HotelsInterface,HotelsRepo>();
 builder.Services.AddScoped<HotelreviewsInterface,HotelReviewsRepos>();
+builder.Services.AddScoped<ITokenService, TokenService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
