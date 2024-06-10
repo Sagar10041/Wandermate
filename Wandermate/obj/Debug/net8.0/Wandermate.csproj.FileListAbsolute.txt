@@ -140,3 +140,5 @@ E:\WebAPP\Wandermate\bin\Debug\net8.0\Microsoft.AspNetCore.JsonPatch.dll
 E:\WebAPP\Wandermate\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 E:\WebAPP\Wandermate\bin\Debug\net8.0\Newtonsoft.Json.dll
 E:\WebAPP\Wandermate\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll
+E:\WebAPP\Wandermate\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+E:\WebAPP\Wandermate\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
