@@ -2,14 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
 
-namespace Wandermate.Models
+namespace Wandermate.Dtos.DestinationReviews
 {
-    public class DestinationReviews
+    public class DestinationReviewsDto
     {
-        [Key]
-        public int ReviewId { get; set; }
+         public int ReviewId { get; set; }
 
         public int Rating { get; set; }
 
@@ -18,6 +16,5 @@ namespace Wandermate.Models
         public DateTime CreatedOn {get; set;} = DateTime.Now;
         
         public int? DestinationId {get; set;}
-        public Destination? Destination {get; set;}
     }
 }

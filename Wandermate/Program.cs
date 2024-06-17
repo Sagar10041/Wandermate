@@ -95,6 +95,8 @@ builder.Services.AddAuthentication(options =>
 builder.Services.AddScoped<HotelsInterface,HotelsRepo>();
 builder.Services.AddScoped<HotelreviewsInterface,HotelReviewsRepos>();
 builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddScoped<DestinationReviewsInterface,DestinationReviewsRepos>();
+builder.Services.AddScoped<DestinationInterface,DestinationRepo>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
