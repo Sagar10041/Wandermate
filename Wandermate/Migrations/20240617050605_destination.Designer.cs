@@ -12,8 +12,8 @@ using Wandermate.Data;
 namespace Wandermate.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240610003422_identityAdduser")]
-    partial class identityAdduser
+    [Migration("20240617050605_destination")]
+    partial class destination
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -54,13 +54,13 @@ namespace Wandermate.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "5c451edb-7501-4ac2-b64f-80ef6eecf911",
+                            Id = "722bac67-5394-4db2-ad32-857c10a8e45a",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "60d9ddca-faa1-48ee-ad36-5e28243519d2",
+                            Id = "c2f97198-acd2-4eff-bd83-58ee51b34feb",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -237,6 +237,63 @@ namespace Wandermate.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("Wandermate.Models.Destination", b =>
+                {
+                    b.Property<int>("DestinationId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DestinationId"));
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("DestinationId");
+
+                    b.ToTable("Destination");
+                });
+
+            modelBuilder.Entity("Wandermate.Models.DestinationReviews", b =>
+                {
+                    b.Property<int>("DestinationReviewId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DestinationReviewId"));
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("DestinationId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Rating")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ReviewText")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("DestinationReviewId");
+
+                    b.HasIndex("DestinationId");
+
+                    b.ToTable("DestinationReviews");
+                });
+
             modelBuilder.Entity("Wandermate.Models.HotelReviews", b =>
                 {
                     b.Property<int>("ReviewId")
@@ -348,6 +405,15 @@ namespace Wandermate.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Wandermate.Models.DestinationReviews", b =>
+                {
+                    b.HasOne("Wandermate.Models.Destination", "Destination")
+                        .WithMany("DestinationReviews")
+                        .HasForeignKey("DestinationId");
+
+                    b.Navigation("Destination");
+                });
+
             modelBuilder.Entity("Wandermate.Models.HotelReviews", b =>
                 {
                     b.HasOne("Wandermate.Models.Hotels", "Hotels")
@@ -355,6 +421,11 @@ namespace Wandermate.Migrations
                         .HasForeignKey("HotelsHotelId");
 
                     b.Navigation("Hotels");
+                });
+
+            modelBuilder.Entity("Wandermate.Models.Destination", b =>
+                {
+                    b.Navigation("DestinationReviews");
                 });
 
             modelBuilder.Entity("Wandermate.Models.Hotels", b =>

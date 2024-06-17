@@ -20,6 +20,8 @@ namespace Wandermate.Data
 
         public DbSet <Hotels> Hotels {get; set;}
         public DbSet <HotelReviews> HotelReviews {get; set;}
+        public DbSet <Destination> Destination {get; set;}
+        public DbSet <DestinationReviews> DestinationReviews {get; set;}
 
         protected override void OnModelCreating(ModelBuilder builder){
             base.OnModelCreating(builder);
