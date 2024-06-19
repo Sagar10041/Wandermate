@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\WebAPP\\Wandermate\\Wandermate.csproj": {}
+    "E:\\WebAPP\\wandermate\\Wandermate.csproj": {}
   },
   "projects": {
-    "E:\\WebAPP\\Wandermate\\Wandermate.csproj": {
+    "E:\\WebAPP\\wandermate\\Wandermate.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\WebAPP\\Wandermate\\Wandermate.csproj",
+        "projectUniqueName": "E:\\WebAPP\\wandermate\\Wandermate.csproj",
         "projectName": "Wandermate",
-        "projectPath": "E:\\WebAPP\\Wandermate\\Wandermate.csproj",
+        "projectPath": "E:\\WebAPP\\wandermate\\Wandermate.csproj",
         "packagesPath": "C:\\Users\\sagar\\.nuget\\packages\\",
-        "outputPath": "E:\\WebAPP\\Wandermate\\obj\\",
+        "outputPath": "E:\\WebAPP\\wandermate\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\sagar\\AppData\\Roaming\\NuGet\\NuGet.Config"

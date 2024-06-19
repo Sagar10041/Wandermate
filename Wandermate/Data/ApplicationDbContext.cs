@@ -23,6 +23,9 @@ namespace Wandermate.Data
         public DbSet <Destination> Destination {get; set;}
         public DbSet <DestinationReviews> DestinationReviews {get; set;}
 
+        public DbSet <Rooms> Rooms {get; set;}
+        public DbSet <RoomReviews> RoomReviews {get; set;}
+
         protected override void OnModelCreating(ModelBuilder builder){
             base.OnModelCreating(builder);
             List<IdentityRole> roles = new List<IdentityRole>{

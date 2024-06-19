@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "DVW4NztfSMXtpD2T2s3FyweIHxkEd6dZOAuztTl82hKoaJxYi8kOKWRlMxSUEIB2ahKky3SlCqPxRB+EIXV97w==",
+  "dgSpecHash": "Lh6S43b9Mv7Fjv7tzHdTg1KsbXB1Wb4SobewtX090aVrTuGzhwN1ttYgd7GIEU3JnWFffz3MtYrXnxnQO8+cyQ==",
   "success": true,
-  "projectFilePath": "E:\\WebAPP\\Wandermate\\Wandermate.csproj",
+  "projectFilePath": "E:\\WebAPP\\wandermate\\Wandermate.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\sagar\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\sagar\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

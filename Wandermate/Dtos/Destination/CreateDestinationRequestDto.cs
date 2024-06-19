@@ -7,7 +7,8 @@ namespace Wandermate.Dtos.Destination
 {
     public class CreateDestinationRequestDto
     {
-                public string Name { get; set; } = String.Empty;
+    
+    public string Name { get; set; } = String.Empty;
 
     public string Address { get; set; }= String.Empty;
 
