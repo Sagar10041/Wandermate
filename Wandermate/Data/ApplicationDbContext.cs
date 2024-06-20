@@ -25,9 +25,24 @@ namespace Wandermate.Data
 
         public DbSet <Rooms> Rooms {get; set;}
         public DbSet <RoomReviews> RoomReviews {get; set;}
+        public DbSet <DestinationBooking> DestinationBookings {get; set;}
 
         protected override void OnModelCreating(ModelBuilder builder){
             base.OnModelCreating(builder);
+
+            
+            builder.Entity<DestinationBooking>(x => x.HasKey(p => new { p.AppUserId, p.DestinationId }));
+
+            builder.Entity<DestinationBooking>()
+                .HasOne(u => u.AppUser)
+                .WithMany(u => u.DestinationBookings)
+                .HasForeignKey(p => p.AppUserId);
+
+            builder.Entity<DestinationBooking>()
+                .HasOne(u => u.Destination)
+                .WithMany(u => u.DestinationBookings)
+                .HasForeignKey(p => p.DestinationId);
+
             List<IdentityRole> roles = new List<IdentityRole>{
                 new IdentityRole{
                     Name ="Admin",

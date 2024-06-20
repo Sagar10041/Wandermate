@@ -51,13 +51,13 @@ namespace Wandermate.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "0a41794f-9b60-4587-ada7-151ac65b0a97",
+                            Id = "90be6b0c-e511-4613-87a3-2da31946d88c",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "69d122d9-d701-4ab0-9ab2-be819dade9eb",
+                            Id = "12eac313-9830-41d6-a196-6a91145388a5",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -263,6 +263,21 @@ namespace Wandermate.Migrations
                     b.ToTable("Destination");
                 });
 
+            modelBuilder.Entity("Wandermate.Models.DestinationBooking", b =>
+                {
+                    b.Property<string>("AppUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("DestinationId")
+                        .HasColumnType("int");
+
+                    b.HasKey("AppUserId", "DestinationId");
+
+                    b.HasIndex("DestinationId");
+
+                    b.ToTable("DestinationBooking");
+                });
+
             modelBuilder.Entity("Wandermate.Models.DestinationReviews", b =>
                 {
                     b.Property<int>("ReviewId")
@@ -456,6 +471,25 @@ namespace Wandermate.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Wandermate.Models.DestinationBooking", b =>
+                {
+                    b.HasOne("Wandermate.Models.AppUser", "AppUser")
+                        .WithMany("DestinationBookings")
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Wandermate.Models.Destination", "Destination")
+                        .WithMany("DestinationBookings")
+                        .HasForeignKey("DestinationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+
+                    b.Navigation("Destination");
+                });
+
             modelBuilder.Entity("Wandermate.Models.DestinationReviews", b =>
                 {
                     b.HasOne("Wandermate.Models.Destination", "Destination")
@@ -483,8 +517,15 @@ namespace Wandermate.Migrations
                     b.Navigation("Rooms");
                 });
 
+            modelBuilder.Entity("Wandermate.Models.AppUser", b =>
+                {
+                    b.Navigation("DestinationBookings");
+                });
+
             modelBuilder.Entity("Wandermate.Models.Destination", b =>
                 {
+                    b.Navigation("DestinationBookings");
+
                     b.Navigation("DestinationReviews");
                 });
 

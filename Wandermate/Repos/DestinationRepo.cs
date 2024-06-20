@@ -6,7 +6,6 @@ using Microsoft.EntityFrameworkCore;
 using Wandermate.Data;
 using Wandermate.Dtos.Destination;
 using Wandermate.Interface;
-using Wandermate.Migrations;
 using Wandermate.Models;
 
 namespace Wandermate.Repos

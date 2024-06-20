@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Wandermate.Migrations
 {
     /// <inheritdoc />
-    public partial class dest : Migration
+    public partial class bookings : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -53,6 +53,22 @@ namespace Wandermate.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Destination",
+                columns: table => new
+                {
+                    DestinationId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    City = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Country = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Destination", x => x.DestinationId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Hotels",
                 columns: table => new
                 {
@@ -66,6 +82,21 @@ namespace Wandermate.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Hotels", x => x.HotelId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Rooms",
+                columns: table => new
+                {
+                    RoomId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Type = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Beds = table.Column<int>(type: "int", nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Rooms", x => x.RoomId);
                 });
 
             migrationBuilder.CreateTable(
@@ -175,6 +206,51 @@ namespace Wandermate.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "DestinationBooking",
+                columns: table => new
+                {
+                    AppUserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    DestinationId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DestinationBooking", x => new { x.AppUserId, x.DestinationId });
+                    table.ForeignKey(
+                        name: "FK_DestinationBooking_AspNetUsers_AppUserId",
+                        column: x => x.AppUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_DestinationBooking_Destination_DestinationId",
+                        column: x => x.DestinationId,
+                        principalTable: "Destination",
+                        principalColumn: "DestinationId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DestinationReviews",
+                columns: table => new
+                {
+                    ReviewId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Rating = table.Column<int>(type: "int", nullable: false),
+                    ReviewText = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DestinationId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DestinationReviews", x => x.ReviewId);
+                    table.ForeignKey(
+                        name: "FK_DestinationReviews_Destination_DestinationId",
+                        column: x => x.DestinationId,
+                        principalTable: "Destination",
+                        principalColumn: "DestinationId");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "HotelReviews",
                 columns: table => new
                 {
@@ -196,13 +272,35 @@ namespace Wandermate.Migrations
                         principalColumn: "HotelId");
                 });
 
+            migrationBuilder.CreateTable(
+                name: "RoomReviews",
+                columns: table => new
+                {
+                    ReviewId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Rating = table.Column<int>(type: "int", nullable: false),
+                    ReviewText = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    RoomId = table.Column<int>(type: "int", nullable: true),
+                    RoomsRoomId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RoomReviews", x => x.ReviewId);
+                    table.ForeignKey(
+                        name: "FK_RoomReviews_Rooms_RoomsRoomId",
+                        column: x => x.RoomsRoomId,
+                        principalTable: "Rooms",
+                        principalColumn: "RoomId");
+                });
+
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "8bfbd0ee-310a-4390-8dd3-90472a0fc22d", null, "Admin", "ADMIN" },
-                    { "a7ead539-4cd7-488d-91ab-ef99b79dfc80", null, "User", "USER" }
+                    { "12eac313-9830-41d6-a196-6a91145388a5", null, "User", "USER" },
+                    { "90be6b0c-e511-4613-87a3-2da31946d88c", null, "Admin", "ADMIN" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -245,9 +343,24 @@ namespace Wandermate.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_DestinationBooking_DestinationId",
+                table: "DestinationBooking",
+                column: "DestinationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DestinationReviews_DestinationId",
+                table: "DestinationReviews",
+                column: "DestinationId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_HotelReviews_HotelsHotelId",
                 table: "HotelReviews",
                 column: "HotelsHotelId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_RoomReviews_RoomsRoomId",
+                table: "RoomReviews",
+                column: "RoomsRoomId");
         }
 
         /// <inheritdoc />
@@ -269,7 +382,16 @@ namespace Wandermate.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "DestinationBooking");
+
+            migrationBuilder.DropTable(
+                name: "DestinationReviews");
+
+            migrationBuilder.DropTable(
                 name: "HotelReviews");
+
+            migrationBuilder.DropTable(
+                name: "RoomReviews");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -278,7 +400,13 @@ namespace Wandermate.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
+                name: "Destination");
+
+            migrationBuilder.DropTable(
                 name: "Hotels");
+
+            migrationBuilder.DropTable(
+                name: "Rooms");
         }
     }
 }

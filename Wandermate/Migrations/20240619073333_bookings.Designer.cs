@@ -12,8 +12,8 @@ using Wandermate.Data;
 namespace Wandermate.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240617064136_changedestination")]
-    partial class changedestination
+    [Migration("20240619073333_bookings")]
+    partial class bookings
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -54,13 +54,13 @@ namespace Wandermate.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "75c0a94f-62f7-494e-a643-ed5b57a7fa78",
+                            Id = "90be6b0c-e511-4613-87a3-2da31946d88c",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "a8ac1362-9c3d-48be-bcfa-85ac52d45b80",
+                            Id = "12eac313-9830-41d6-a196-6a91145388a5",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -266,6 +266,21 @@ namespace Wandermate.Migrations
                     b.ToTable("Destination");
                 });
 
+            modelBuilder.Entity("Wandermate.Models.DestinationBooking", b =>
+                {
+                    b.Property<string>("AppUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("DestinationId")
+                        .HasColumnType("int");
+
+                    b.HasKey("AppUserId", "DestinationId");
+
+                    b.HasIndex("DestinationId");
+
+                    b.ToTable("DestinationBooking");
+                });
+
             modelBuilder.Entity("Wandermate.Models.DestinationReviews", b =>
                 {
                     b.Property<int>("ReviewId")
@@ -354,6 +369,60 @@ namespace Wandermate.Migrations
                     b.ToTable("Hotels");
                 });
 
+            modelBuilder.Entity("Wandermate.Models.RoomReviews", b =>
+                {
+                    b.Property<int>("ReviewId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ReviewId"));
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Rating")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ReviewText")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("RoomId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RoomsRoomId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ReviewId");
+
+                    b.HasIndex("RoomsRoomId");
+
+                    b.ToTable("RoomReviews");
+                });
+
+            modelBuilder.Entity("Wandermate.Models.Rooms", b =>
+                {
+                    b.Property<int>("RoomId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RoomId"));
+
+                    b.Property<int>("Beds")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("RoomId");
+
+                    b.ToTable("Rooms");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -405,6 +474,25 @@ namespace Wandermate.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Wandermate.Models.DestinationBooking", b =>
+                {
+                    b.HasOne("Wandermate.Models.AppUser", "AppUser")
+                        .WithMany("DestinationBookings")
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Wandermate.Models.Destination", "Destination")
+                        .WithMany("DestinationBookings")
+                        .HasForeignKey("DestinationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+
+                    b.Navigation("Destination");
+                });
+
             modelBuilder.Entity("Wandermate.Models.DestinationReviews", b =>
                 {
                     b.HasOne("Wandermate.Models.Destination", "Destination")
@@ -423,14 +511,35 @@ namespace Wandermate.Migrations
                     b.Navigation("Hotels");
                 });
 
+            modelBuilder.Entity("Wandermate.Models.RoomReviews", b =>
+                {
+                    b.HasOne("Wandermate.Models.Rooms", "Rooms")
+                        .WithMany("RoomReviews")
+                        .HasForeignKey("RoomsRoomId");
+
+                    b.Navigation("Rooms");
+                });
+
+            modelBuilder.Entity("Wandermate.Models.AppUser", b =>
+                {
+                    b.Navigation("DestinationBookings");
+                });
+
             modelBuilder.Entity("Wandermate.Models.Destination", b =>
                 {
+                    b.Navigation("DestinationBookings");
+
                     b.Navigation("DestinationReviews");
                 });
 
             modelBuilder.Entity("Wandermate.Models.Hotels", b =>
                 {
                     b.Navigation("HotelReviews");
+                });
+
+            modelBuilder.Entity("Wandermate.Models.Rooms", b =>
+                {
+                    b.Navigation("RoomReviews");
                 });
 #pragma warning restore 612, 618
         }
