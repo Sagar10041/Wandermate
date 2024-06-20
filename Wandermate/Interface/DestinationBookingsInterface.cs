@@ -11,5 +11,7 @@ namespace Wandermate.Interface
           Task<List<Destination>> GetUserBookings(AppUser user);
 
           Task<DestinationBooking> CreateAsync(DestinationBooking destinationBooking);
+
+          Task<DestinationBooking> DeleteBookings(AppUser appUser, string name);
     }
 }

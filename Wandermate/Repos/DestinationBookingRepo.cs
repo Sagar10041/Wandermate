@@ -37,5 +37,19 @@ namespace Wandermate.Repos
             await _context.SaveChangesAsync();
             return destinationBooking;
         }
+
+        public  async Task<DestinationBooking> DeleteBookings(AppUser appUser, string name)
+        {
+            var destBookingModel = await _context.DestinationBookings.FirstOrDefaultAsync(x => x.AppUserId == appUser.Id && x.Destination.Name.ToLower() == name.ToLower());
+
+            if (destBookingModel == null)
+            {
+                return null;
+            }
+
+            _context.DestinationBookings.Remove(destBookingModel);
+            await _context.SaveChangesAsync();
+            return destBookingModel;
+        }
     }
 }

@@ -71,5 +71,28 @@ namespace Wandermate.Controllers
                 return Created();
             }
         }
+
+        [HttpDelete]
+        [Authorize]
+        public async Task<IActionResult> DeleteDestinationBookings(string name)
+        {
+            var username = User.GetUsername();
+            var appUser = await _userManager.FindByNameAsync(username);
+
+            var userBookings = await _destBookingRepo.GetUserBookings(appUser);
+
+            var filteredbookings = userBookings.Where(s => s.Name.ToLower() == name.ToLower()).ToList();
+
+            if (filteredbookings.Count() >= 1)
+            {
+                await _destBookingRepo.DeleteBookings(appUser, name);
+            }
+            else
+            {
+                return BadRequest("Destination not in your Bookings");
+            }
+
+            return Ok();
+        }
     }
 }
