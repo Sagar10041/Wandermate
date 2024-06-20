@@ -30,12 +30,46 @@ namespace Wandermate.Controllers
 
          [HttpGet]
         [Authorize]
-        public async Task<IActionResult> GetUserPortfolio()
+        public async Task<IActionResult> GetUserBookings()
         {
             var username = User.GetUsername();
             var appUser = await _userManager.FindByNameAsync(username);
             var userBookings = await _destBookingRepo.GetUserBookings(appUser);
             return Ok(userBookings);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> AddDestinationBookings(string name)
+        {
+            var username = User.GetUsername();
+            var appUser = await _userManager.FindByNameAsync(username);
+            var dest = await _destRepo.GetByNameAsync(name);
+
+           
+
+            if (dest == null) return BadRequest("Destination not found");
+
+            var userBooking = await _destBookingRepo.GetUserBookings(appUser);
+
+            if (userBooking.Any(e => e.Name.ToLower() == name.ToLower())) return BadRequest("Cannot add same Destination to bookings");
+
+            var destBookingModel = new DestinationBooking
+            {
+                DestinationId = dest.DestinationId,
+                AppUserId = appUser.Id
+            };
+
+             await _destBookingRepo.CreateAsync(destBookingModel);
+
+            if (destBookingModel == null)
+            {
+                return StatusCode(500, "Could not create");
+            }
+            else
+            {
+                return Created();
+            }
         }
     }
 }

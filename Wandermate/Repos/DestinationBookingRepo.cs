@@ -30,5 +30,12 @@ namespace Wandermate.Repos
                 Country = dest.Destination.Country,
             }).ToListAsync();
         }
+
+          public async Task<DestinationBooking> CreateAsync(DestinationBooking destinationBooking)
+        {
+            await _context.DestinationBookings.AddAsync(destinationBooking);
+            await _context.SaveChangesAsync();
+            return destinationBooking;
+        }
     }
 }

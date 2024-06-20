@@ -17,5 +17,7 @@ namespace Wandermate.Interface
         Task <Destination?> DeleteAsync (int id);
 
         Task<bool> DestinationExists(int id);
+
+         Task<Destination?> GetByNameAsync(string name);
     }
 }

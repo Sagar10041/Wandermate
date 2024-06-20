@@ -9,5 +9,7 @@ namespace Wandermate.Interface
     public interface DestinationBookingsInterface
     {
           Task<List<Destination>> GetUserBookings(AppUser user);
+
+          Task<DestinationBooking> CreateAsync(DestinationBooking destinationBooking);
     }
 }

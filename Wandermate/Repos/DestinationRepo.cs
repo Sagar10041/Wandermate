@@ -69,5 +69,10 @@ namespace Wandermate.Repos
 
 
         }
+
+        public async Task<Destination?> GetByNameAsync(string name)
+        {
+             return await _context.Destination.FirstOrDefaultAsync(s => s.Name == name);
+        }
     }
 }
