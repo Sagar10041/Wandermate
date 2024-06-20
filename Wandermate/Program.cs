@@ -99,6 +99,7 @@ builder.Services.AddScoped<DestinationReviewsInterface,DestinationReviewsRepos>(
 builder.Services.AddScoped<DestinationInterface,DestinationRepo>();
 builder.Services.AddScoped<RoomsInterface,RoomsRepo>();
 builder.Services.AddScoped<RoomReviewsInterface,RoomReviewsRepos>();
+builder.Services.AddScoped<DestinationBookingsInterface,DestinationBookingRepo>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
