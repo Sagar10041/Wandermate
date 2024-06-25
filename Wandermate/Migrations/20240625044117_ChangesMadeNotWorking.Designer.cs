@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Wandermate.Data;
@@ -11,9 +12,11 @@ using Wandermate.Data;
 namespace Wandermate.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240625044117_ChangesMadeNotWorking")]
+    partial class ChangesMadeNotWorking
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,13 +53,13 @@ namespace Wandermate.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "dc720784-99d3-40e1-b112-367115bab5e1",
+                            Id = "04e1286c-590b-475a-8269-2ce6e0e26ec2",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "2fe4486f-4da7-4361-a493-e222e97e8b35",
+                            Id = "422e52c4-f38b-4d96-a2e9-f2ab9d4d04b7",
                             Name = "User",
                             NormalizedName = "USER"
                         });
