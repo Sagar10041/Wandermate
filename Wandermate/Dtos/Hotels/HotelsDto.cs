@@ -14,7 +14,7 @@ namespace Wandermate.Dtos.Hotels
 
         public int Price { get; set; }
 
-        public string Image { get; set; } = String.Empty;
+        public List<string> Image {get; set;} = new List<string>();
 
         public int Rating { get; set; }
 

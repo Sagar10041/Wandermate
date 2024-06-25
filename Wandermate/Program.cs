@@ -12,6 +12,7 @@ using Wandermate.Service;
 using Npgsql;
 
 var builder = WebApplication.CreateBuilder(args);
+var AllowLocalhostFrontend = "_allowLocalhostFrontend";
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -91,8 +92,17 @@ builder.Services.AddAuthentication(options =>
 
 );
 
+// builder.Services.AddCors(options => {
+//     options.AddPolicy(name: AllowLocalhostFrontend,
+//     builder => {
+//         builder.WithOrigins("http://localhost:5173")
+//                        .AllowAnyHeader()
+//                        .AllowAnyMethod()
+//                        .AllowCredentials();
+//     });
+// });
 
-
+builder.Services.AddCors();
 builder.Services.AddScoped<HotelsInterface,HotelsRepo>();
 builder.Services.AddScoped<HotelreviewsInterface,HotelReviewsRepos>();
 builder.Services.AddScoped<ITokenService, TokenService>();
@@ -111,6 +121,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+// app.UseCors("AllowLocalhostFrontend");
+app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:5173"));
 app.UseAuthorization();
 app.MapControllers();
 
