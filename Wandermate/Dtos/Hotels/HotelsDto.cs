@@ -8,16 +8,21 @@ namespace Wandermate.Dtos.Hotels
 {
     public class HotelsDto
     {
-            public int HotelId { get; set; }
+        public int HotelId { get; set; }
+        
+        public string Name { get; set; } = String.Empty;
 
-    
-    public string Name { get; set; } = String.Empty;
+        public int Price { get; set; }
 
-    public string Address { get; set; }= String.Empty;
+        public string Image { get; set; } = String.Empty;
 
-    public string City { get; set; } = String.Empty;
+        public int Rating { get; set; }
 
-    public string Country { get; set; } = String.Empty;
+        public bool FreeCancellation {get; set; }
+
+        public bool ReserveNow {get; set;}
+
+        public string Description { get; set; } = String.Empty;
 
      public List<HotelReviewDti>? HotelReviews {get; set;}
     }

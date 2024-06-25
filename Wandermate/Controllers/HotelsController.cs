@@ -64,18 +64,15 @@ namespace Wandermate.Controllers
             if(hotel == null){
                 return NotFound();
             }
-            
              return Ok(hotel.ToHotelsDto()); 
         }
 
         [HttpDelete]
         [Route("{id:int}")]
         public async Task <IActionResult> Delete([FromRoute] int id){
-
             var hotel = await _hotelsrepo.DeleteAsync(id);
             if (hotel == null){
                 return NotFound();
-
             }
             return NoContent();
         }

@@ -1,25 +1,28 @@
 {
   "format": 1,
   "restore": {
-    "E:\\WebAPP\\wandermate\\Wandermate.csproj": {}
+    "D:\\Web Development\\IIC\\IIC Enrichment 2024\\WanderMate-Backend\\Wandermate\\Wandermate\\Wandermate.csproj": {}
   },
   "projects": {
-    "E:\\WebAPP\\wandermate\\Wandermate.csproj": {
+    "D:\\Web Development\\IIC\\IIC Enrichment 2024\\WanderMate-Backend\\Wandermate\\Wandermate\\Wandermate.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\WebAPP\\wandermate\\Wandermate.csproj",
+        "projectUniqueName": "D:\\Web Development\\IIC\\IIC Enrichment 2024\\WanderMate-Backend\\Wandermate\\Wandermate\\Wandermate.csproj",
         "projectName": "Wandermate",
-        "projectPath": "E:\\WebAPP\\wandermate\\Wandermate.csproj",
-        "packagesPath": "C:\\Users\\sagar\\.nuget\\packages\\",
-        "outputPath": "E:\\WebAPP\\wandermate\\obj\\",
+        "projectPath": "D:\\Web Development\\IIC\\IIC Enrichment 2024\\WanderMate-Backend\\Wandermate\\Wandermate\\Wandermate.csproj",
+        "packagesPath": "C:\\Users\\sonam\\.nuget\\packages\\",
+        "outputPath": "D:\\Web Development\\IIC\\IIC Enrichment 2024\\WanderMate-Backend\\Wandermate\\Wandermate\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\sagar\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\sonam\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -69,10 +72,6 @@
               "target": "Package",
               "version": "[8.0.0, )"
             },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
-              "target": "Package",
-              "version": "[8.0.0, )"
-            },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
@@ -86,6 +85,14 @@
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.3, )"
+            },
+            "Npgsql": {
+              "target": "Package",
+              "version": "[8.0.3, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[8.0.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -111,7 +118,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

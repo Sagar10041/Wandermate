@@ -9,6 +9,7 @@ using Wandermate.Interface;
 using Wandermate.Models;
 using Wandermate.Repos;
 using Wandermate.Service;
+using Npgsql;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -52,9 +53,9 @@ builder.Services.AddControllers().AddNewtonsoftJson(options =>{
 
 );
 
-builder.Services.AddDbContext<ApplicationDbContext>(options =>{
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-});
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))
+);
 builder.Services.AddIdentity<AppUser,IdentityRole>(options =>{
     options.Password.RequireDigit=true;
     options.Password.RequireLowercase=true;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Numerics;
 using System.Threading.Tasks;
 
 namespace Wandermate.Models
@@ -11,16 +12,21 @@ namespace Wandermate.Models
     public class Hotels
     {
     [Key]    
-    public int HotelId { get; set; }
+        public int HotelId { get; set; }
+        
+        public string Name { get; set; } = String.Empty;
 
-    
-    public string Name { get; set; } = String.Empty;
+        public int Price { get; set; }
 
-    public string Address { get; set; }= String.Empty;
+        public string Image { get; set; } = String.Empty;
 
-    public string City { get; set; } = String.Empty;
+        public int Rating { get; set; }
 
-    public string Country { get; set; } = String.Empty;
+        public bool FreeCancellation {get; set; }
+
+        public bool ReserveNow {get; set;}
+
+        public string Description { get; set; } = String.Empty;
 
     public List<HotelReviews> HotelReviews {get; set;} =new List<HotelReviews>();
     }

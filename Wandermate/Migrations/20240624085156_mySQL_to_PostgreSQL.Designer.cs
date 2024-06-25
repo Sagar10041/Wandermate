@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Wandermate.Data;
@@ -11,9 +12,11 @@ using Wandermate.Data;
 namespace Wandermate.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240624085156_mySQL_to_PostgreSQL")]
+    partial class mySQL_to_PostgreSQL
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,13 +53,13 @@ namespace Wandermate.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "3ed3932b-d7fb-401e-b999-14dd0af12d6e",
+                            Id = "5213dec3-2d42-4b50-a9d1-179341caa52a",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "71c27d52-f9ac-4d48-a9ed-7f4ed8d6a5b0",
+                            Id = "de16d0a7-05a7-4231-bfec-a12303f40661",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -343,29 +346,21 @@ namespace Wandermate.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("HotelId"));
 
-                    b.Property<string>("Description")
+                    b.Property<string>("Address")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<bool>("FreeCancellation")
-                        .HasColumnType("boolean");
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("text");
 
-                    b.Property<string>("Image")
+                    b.Property<string>("Country")
                         .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
-
-                    b.Property<int>("Price")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("Rating")
-                        .HasColumnType("integer");
-
-                    b.Property<bool>("ReserveNow")
-                        .HasColumnType("boolean");
 
                     b.HasKey("HotelId");
 
