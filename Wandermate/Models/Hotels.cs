@@ -12,7 +12,7 @@ namespace Wandermate.Models
     public class Hotels
     {
     [Key]    
-        public int HotelId { get; set; }
+        public int Id { get; set; }
         
         public string Name { get; set; } = String.Empty;
 

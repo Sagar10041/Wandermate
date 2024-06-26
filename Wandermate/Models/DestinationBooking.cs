@@ -10,7 +10,7 @@ namespace Wandermate.Models
     public class DestinationBooking
     {
         public string AppUserId {get; set;}
-        public int DestinationId {get; set;}
+        public int Id {get; set;}
 
         public AppUser AppUser{get; set;}
 

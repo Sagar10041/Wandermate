@@ -50,7 +50,7 @@ namespace Wandermate.Controllers
         public async Task <IActionResult> Create([FromBody] CreateRoomsRequestDto roomrqDto){
             var roommodel = roomrqDto.ToRoomRequestDto();
             await _roomrepo.CreateAsync(roommodel);
-            return CreatedAtAction(nameof(GetById),new {id=roommodel.RoomId},roommodel.ToRoomsDto());
+            return CreatedAtAction(nameof(GetById),new {id=roommodel.Id},roommodel.ToRoomsDto());
         }
         
         [HttpPut]

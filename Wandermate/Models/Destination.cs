@@ -12,7 +12,7 @@ namespace Wandermate.Models
     public class Destination
     {
     [Key]
-    public int DestinationId { get; set; }
+    public int Id { get; set; }
 
     
       public string Name { get; set; } = String.Empty;

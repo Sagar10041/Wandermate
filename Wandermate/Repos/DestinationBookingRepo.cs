@@ -23,7 +23,7 @@ namespace Wandermate.Repos
              return await _context.DestinationBookings.Where(u => u.AppUserId == user.Id)
             .Select(dest => new Destination
             {
-                DestinationId  = dest.DestinationId ,
+               Id  = dest.Id ,
                 Name = dest.Destination.Name,
                 Price = dest.Destination.Price,
                 Rating = dest.Destination.Rating,

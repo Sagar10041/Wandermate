@@ -17,7 +17,7 @@ namespace Wandermate.Mappers
                 Rating= destinationreviewsModel.Rating,
                 ReviewText=destinationreviewsModel.ReviewText,
                 CreatedOn=destinationreviewsModel.CreatedOn,
-                DestinationId=destinationreviewsModel.DestinationId
+               Id=destinationreviewsModel.Id
 
             };
         }
@@ -26,7 +26,7 @@ namespace Wandermate.Mappers
             return new DestinationReviews{
                 Rating= review.Rating,
                 ReviewText=review.ReviewText,
-                DestinationId=destId
+               Id=destId
 
             };
         }

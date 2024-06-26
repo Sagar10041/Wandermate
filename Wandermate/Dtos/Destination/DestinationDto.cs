@@ -9,7 +9,7 @@ namespace Wandermate.Dtos.Destination
     public class DestinationDto
     {
         
-            public int DestinationId { get; set; }
+            public int Id { get; set; }
 
     
       public string Name { get; set; } = String.Empty;

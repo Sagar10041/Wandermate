@@ -15,7 +15,7 @@ namespace Wandermate.Dtos.RoomReviews
 
         public DateTime CreatedOn {get; set;} = DateTime.Now;
         
-         public int? RoomId {get; set;}
+         public int? Id {get; set;}
    
     }
 }

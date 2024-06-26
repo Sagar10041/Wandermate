@@ -13,7 +13,7 @@ namespace Wandermate.Mappers
          public static DestinationDto ToDestinationDto(this Destination destmodel){
 
             return new DestinationDto{
-                DestinationId= destmodel.DestinationId,
+               Id= destmodel.Id,
                 Name=destmodel.Name,
                 Price=destmodel.Price,
                 Image=destmodel.Image,
