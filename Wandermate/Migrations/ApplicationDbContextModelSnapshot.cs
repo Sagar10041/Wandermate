@@ -50,13 +50,21 @@ namespace Wandermate.Migrations
                     b.HasData(
                         new
                         {
+<<<<<<< HEAD
                             Id = "028e3b2c-35ab-45ba-9f57-6c4f2e7627bf",
+=======
+                            Id = "dc720784-99d3-40e1-b112-367115bab5e1",
+>>>>>>> parent of 10af8eb (CORS implemented)
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
+<<<<<<< HEAD
                             Id = "5456b6da-8b95-4191-a72e-b4ff5be30679",
+=======
+                            Id = "2fe4486f-4da7-4361-a493-e222e97e8b35",
+>>>>>>> parent of 10af8eb (CORS implemented)
                             Name = "User",
                             NormalizedName = "USER"
                         });

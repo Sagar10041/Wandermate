@@ -12,13 +12,8 @@ using Wandermate.Data;
 namespace Wandermate.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-<<<<<<<< HEAD:Wandermate/Migrations/20240626033014_revert.Designer.cs
-    [Migration("20240626033014_revert")]
-    partial class revert
-========
-    [Migration("20240625044117_ChangesMadeNotWorking")]
-    partial class ChangesMadeNotWorking
->>>>>>>> parent of 10af8eb (CORS implemented):Wandermate/Migrations/20240625044117_ChangesMadeNotWorking.Designer.cs
+    [Migration("20240624085156_mySQL_to_PostgreSQL")]
+    partial class mySQL_to_PostgreSQL
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -58,21 +53,13 @@ namespace Wandermate.Migrations
                     b.HasData(
                         new
                         {
-<<<<<<<< HEAD:Wandermate/Migrations/20240626033014_revert.Designer.cs
-                            Id = "028e3b2c-35ab-45ba-9f57-6c4f2e7627bf",
-========
-                            Id = "04e1286c-590b-475a-8269-2ce6e0e26ec2",
->>>>>>>> parent of 10af8eb (CORS implemented):Wandermate/Migrations/20240625044117_ChangesMadeNotWorking.Designer.cs
+                            Id = "5213dec3-2d42-4b50-a9d1-179341caa52a",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-<<<<<<<< HEAD:Wandermate/Migrations/20240626033014_revert.Designer.cs
-                            Id = "5456b6da-8b95-4191-a72e-b4ff5be30679",
-========
-                            Id = "422e52c4-f38b-4d96-a2e9-f2ab9d4d04b7",
->>>>>>>> parent of 10af8eb (CORS implemented):Wandermate/Migrations/20240625044117_ChangesMadeNotWorking.Designer.cs
+                            Id = "de16d0a7-05a7-4231-bfec-a12303f40661",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -359,29 +346,21 @@ namespace Wandermate.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("HotelId"));
 
-                    b.Property<string>("Description")
+                    b.Property<string>("Address")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<bool>("FreeCancellation")
-                        .HasColumnType("boolean");
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("text");
 
-                    b.Property<string>("Image")
+                    b.Property<string>("Country")
                         .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("numeric");
-
-                    b.Property<int>("Rating")
-                        .HasColumnType("integer");
-
-                    b.Property<bool>("ReserveNow")
-                        .HasColumnType("boolean");
 
                     b.HasKey("HotelId");
 

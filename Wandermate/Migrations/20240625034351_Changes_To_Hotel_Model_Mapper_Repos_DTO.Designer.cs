@@ -12,13 +12,8 @@ using Wandermate.Data;
 namespace Wandermate.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-<<<<<<<< HEAD:Wandermate/Migrations/20240626033014_revert.Designer.cs
-    [Migration("20240626033014_revert")]
-    partial class revert
-========
-    [Migration("20240625044117_ChangesMadeNotWorking")]
-    partial class ChangesMadeNotWorking
->>>>>>>> parent of 10af8eb (CORS implemented):Wandermate/Migrations/20240625044117_ChangesMadeNotWorking.Designer.cs
+    [Migration("20240625034351_Changes_To_Hotel_Model_Mapper_Repos_DTO")]
+    partial class Changes_To_Hotel_Model_Mapper_Repos_DTO
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -58,21 +53,13 @@ namespace Wandermate.Migrations
                     b.HasData(
                         new
                         {
-<<<<<<<< HEAD:Wandermate/Migrations/20240626033014_revert.Designer.cs
-                            Id = "028e3b2c-35ab-45ba-9f57-6c4f2e7627bf",
-========
-                            Id = "04e1286c-590b-475a-8269-2ce6e0e26ec2",
->>>>>>>> parent of 10af8eb (CORS implemented):Wandermate/Migrations/20240625044117_ChangesMadeNotWorking.Designer.cs
+                            Id = "3ed3932b-d7fb-401e-b999-14dd0af12d6e",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-<<<<<<<< HEAD:Wandermate/Migrations/20240626033014_revert.Designer.cs
-                            Id = "5456b6da-8b95-4191-a72e-b4ff5be30679",
-========
-                            Id = "422e52c4-f38b-4d96-a2e9-f2ab9d4d04b7",
->>>>>>>> parent of 10af8eb (CORS implemented):Wandermate/Migrations/20240625044117_ChangesMadeNotWorking.Designer.cs
+                            Id = "71c27d52-f9ac-4d48-a9ed-7f4ed8d6a5b0",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -374,8 +361,8 @@ namespace Wandermate.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("numeric");
+                    b.Property<int>("Price")
+                        .HasColumnType("integer");
 
                     b.Property<int>("Rating")
                         .HasColumnType("integer");
