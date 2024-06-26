@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\WebAPP\\wandermate\\Wandermate.csproj": {}
+    "E:\\WebAPP\\Wandermate\\Wandermate.csproj": {}
   },
   "projects": {
-    "E:\\WebAPP\\wandermate\\Wandermate.csproj": {
+    "E:\\WebAPP\\Wandermate\\Wandermate.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\WebAPP\\wandermate\\Wandermate.csproj",
+        "projectUniqueName": "E:\\WebAPP\\Wandermate\\Wandermate.csproj",
         "projectName": "Wandermate",
-        "projectPath": "E:\\WebAPP\\wandermate\\Wandermate.csproj",
+        "projectPath": "E:\\WebAPP\\Wandermate\\Wandermate.csproj",
         "packagesPath": "C:\\Users\\sagar\\.nuget\\packages\\",
-        "outputPath": "E:\\WebAPP\\wandermate\\obj\\",
+        "outputPath": "E:\\WebAPP\\Wandermate\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\sagar\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -46,6 +46,10 @@
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[8.0.0, )"
+            },
+            "Microsoft.AspNetCore.Cors": {
+              "target": "Package",
+              "version": "[2.2.0, )"
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",

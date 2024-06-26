@@ -14,9 +14,12 @@ namespace Wandermate.Mappers
             return new HotelsDto{
                 HotelId= hotelmodel.HotelId,
                 Name=hotelmodel.Name,
-                Address=hotelmodel.Address,
-                City=hotelmodel.City,
-                Country=hotelmodel.Country,
+                Price=hotelmodel.Price,
+                Image=hotelmodel.Image,
+                Description=hotelmodel.Description,
+                Rating=hotelmodel.Rating,
+                FreeCancellation=hotelmodel.FreeCancellation,
+                ReserveNow=hotelmodel.FreeCancellation,
                 HotelReviews=hotelmodel.HotelReviews.Select(c => c.ToHotelReviewDto()).ToList()
                 
             };
@@ -25,10 +28,13 @@ namespace Wandermate.Mappers
 
         public static Hotels ToHotelRequestDto(this CreateHotelsRequestDto reqDto){
             return new Hotels{
-                Name=reqDto.Name,
-                Address=reqDto.Address,
-                City=reqDto.City,
-                Country=reqDto.Country
+               Name=reqDto.Name,
+                Price=reqDto.Price,
+                Image=reqDto.Image,
+                Description=reqDto.Description,
+                Rating=reqDto.Rating,
+                FreeCancellation=reqDto.FreeCancellation,
+                ReserveNow=reqDto.FreeCancellation,
             };
         }
     }

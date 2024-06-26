@@ -17,6 +17,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddCors();
 
 builder.Services.AddSwaggerGen(option => // for checking auth in swagger
 {
@@ -100,6 +101,7 @@ builder.Services.AddScoped<DestinationInterface,DestinationRepo>();
 builder.Services.AddScoped<RoomsInterface,RoomsRepo>();
 builder.Services.AddScoped<RoomReviewsInterface,RoomReviewsRepos>();
 builder.Services.AddScoped<DestinationBookingsInterface,DestinationBookingRepo>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -108,6 +110,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseCors(options =>options.WithOrigins("http://localhost:5173").AllowAnyHeader().AllowAnyMethod());
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
