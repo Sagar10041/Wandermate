@@ -23,7 +23,6 @@ namespace Wandermate.Mappers
                 HotelReviews=hotelmodel.HotelReviews.Select(c => c.ToHotelReviewDto()).ToList()
                 
             };
-
         }
 
         public static Hotels ToHotelRequestDto(this CreateHotelsRequestDto reqDto){

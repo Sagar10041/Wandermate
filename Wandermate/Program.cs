@@ -9,8 +9,10 @@ using Wandermate.Interface;
 using Wandermate.Models;
 using Wandermate.Repos;
 using Wandermate.Service;
+using Npgsql;
 
 var builder = WebApplication.CreateBuilder(args);
+var AllowLocalhostFrontend = "_allowLocalhostFrontend";
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -53,9 +55,9 @@ builder.Services.AddControllers().AddNewtonsoftJson(options =>{
 
 );
 
-builder.Services.AddDbContext<ApplicationDbContext>(options =>{
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-});
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))
+);
 builder.Services.AddIdentity<AppUser,IdentityRole>(options =>{
     options.Password.RequireDigit=true;
     options.Password.RequireLowercase=true;
@@ -91,8 +93,17 @@ builder.Services.AddAuthentication(options =>
 
 );
 
+// builder.Services.AddCors(options => {
+//     options.AddPolicy(name: AllowLocalhostFrontend,
+//     builder => {
+//         builder.WithOrigins("http://localhost:5173")
+//                        .AllowAnyHeader()
+//                        .AllowAnyMethod()
+//                        .AllowCredentials();
+//     });
+// });
 
-
+builder.Services.AddCors();
 builder.Services.AddScoped<HotelsInterface,HotelsRepo>();
 builder.Services.AddScoped<HotelreviewsInterface,HotelReviewsRepos>();
 builder.Services.AddScoped<ITokenService, TokenService>();
@@ -113,6 +124,8 @@ if (app.Environment.IsDevelopment())
 app.UseCors(options =>options.WithOrigins("http://localhost:5173").AllowAnyHeader().AllowAnyMethod());
 
 app.UseHttpsRedirection();
+// app.UseCors("AllowLocalhostFrontend");
+
 app.UseAuthorization();
 app.MapControllers();
 

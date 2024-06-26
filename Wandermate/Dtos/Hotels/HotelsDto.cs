@@ -8,10 +8,9 @@ namespace Wandermate.Dtos.Hotels
 {
     public class HotelsDto
     {
-            public int HotelId { get; set; }
-
-    
-    public string Name { get; set; } = String.Empty;
+        public int HotelId { get; set; }
+        
+        public string Name { get; set; } = String.Empty;
 
     public decimal Price { get; set; }
 
