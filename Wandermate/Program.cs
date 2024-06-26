@@ -114,11 +114,6 @@ if (app.Environment.IsDevelopment())
 app.UseCors(options =>options.WithOrigins("http://localhost:5173").AllowAnyHeader().AllowAnyMethod());
 
 app.UseHttpsRedirection();
-<<<<<<< HEAD
-// app.UseCors("AllowLocalhostFrontend");
-
-=======
->>>>>>> parent of 10af8eb (CORS implemented)
 app.UseAuthorization();
 app.MapControllers();
 

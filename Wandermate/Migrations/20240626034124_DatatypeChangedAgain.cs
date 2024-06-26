@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -9,11 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Wandermate.Migrations
 {
     /// <inheritdoc />
-<<<<<<<< HEAD:Wandermate/Migrations/20240626033014_revert.cs
-    public partial class revert : Migration
-========
-    public partial class mySQL_to_PostgreSQL : Migration
->>>>>>>> parent of 10af8eb (CORS implemented):Wandermate/Migrations/20240624085156_mySQL_to_PostgreSQL.cs
+    public partial class DatatypeChangedAgain : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -80,18 +77,12 @@ namespace Wandermate.Migrations
                     HotelId = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(type: "text", nullable: false),
-<<<<<<<< HEAD:Wandermate/Migrations/20240626033014_revert.cs
                     Price = table.Column<decimal>(type: "numeric", nullable: false),
-                    Image = table.Column<string>(type: "text", nullable: false),
+                    Image = table.Column<List<string>>(type: "text[]", nullable: false),
                     Description = table.Column<string>(type: "text", nullable: false),
                     Rating = table.Column<int>(type: "integer", nullable: false),
                     FreeCancellation = table.Column<bool>(type: "boolean", nullable: false),
                     ReserveNow = table.Column<bool>(type: "boolean", nullable: false)
-========
-                    Address = table.Column<string>(type: "text", nullable: false),
-                    City = table.Column<string>(type: "text", nullable: false),
-                    Country = table.Column<string>(type: "text", nullable: false)
->>>>>>>> parent of 10af8eb (CORS implemented):Wandermate/Migrations/20240624085156_mySQL_to_PostgreSQL.cs
                 },
                 constraints: table =>
                 {
@@ -313,13 +304,8 @@ namespace Wandermate.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-<<<<<<<< HEAD:Wandermate/Migrations/20240626033014_revert.cs
-                    { "028e3b2c-35ab-45ba-9f57-6c4f2e7627bf", null, "Admin", "ADMIN" },
-                    { "5456b6da-8b95-4191-a72e-b4ff5be30679", null, "User", "USER" }
-========
-                    { "5213dec3-2d42-4b50-a9d1-179341caa52a", null, "Admin", "ADMIN" },
-                    { "de16d0a7-05a7-4231-bfec-a12303f40661", null, "User", "USER" }
->>>>>>>> parent of 10af8eb (CORS implemented):Wandermate/Migrations/20240624085156_mySQL_to_PostgreSQL.cs
+                    { "b1d9251c-b728-4a19-8c31-43f2741f0901", null, "User", "USER" },
+                    { "be2bb5bc-963e-4d34-a503-bfe64b1e6d4e", null, "Admin", "ADMIN" }
                 });
 
             migrationBuilder.CreateIndex(
