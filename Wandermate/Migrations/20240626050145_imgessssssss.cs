@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -9,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Wandermate.Migrations
 {
     /// <inheritdoc />
-    public partial class changedhotels : Migration
+    public partial class imgessssssss : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -77,7 +78,7 @@ namespace Wandermate.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(type: "text", nullable: false),
                     Price = table.Column<decimal>(type: "numeric", nullable: false),
-                    Image = table.Column<string>(type: "text", nullable: false),
+                    Image = table.Column<List<string>>(type: "text[]", nullable: false),
                     Description = table.Column<string>(type: "text", nullable: false),
                     Rating = table.Column<int>(type: "integer", nullable: false),
                     FreeCancellation = table.Column<bool>(type: "boolean", nullable: false),
@@ -303,8 +304,8 @@ namespace Wandermate.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "ad8c8670-3eb9-4ee8-964a-12d860b44c52", null, "User", "USER" },
-                    { "e7491a98-7874-46c3-ae51-1c22f4b6c38f", null, "Admin", "ADMIN" }
+                    { "2cd86342-b3bc-4081-8ce6-43a788100f9f", null, "User", "USER" },
+                    { "ddeb7396-272f-4103-9add-41b75308fad4", null, "Admin", "ADMIN" }
                 });
 
             migrationBuilder.CreateIndex(
