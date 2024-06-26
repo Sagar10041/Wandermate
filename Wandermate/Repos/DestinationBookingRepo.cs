@@ -25,9 +25,13 @@ namespace Wandermate.Repos
             {
                 DestinationId  = dest.DestinationId ,
                 Name = dest.Destination.Name,
-                Address = dest.Destination.Address,
-                City = dest.Destination.City,
-                Country = dest.Destination.Country,
+                Price = dest.Destination.Price,
+                Rating = dest.Destination.Rating,
+                Description = dest.Destination.Description,
+                Image= dest.Destination.Image,
+                FreeCancellation=dest.Destination.FreeCancellation,
+                ReserveNow=dest.Destination.ReserveNow
+
             }).ToListAsync();
         }
 
