@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Wandermate.Models;
 using Wandermate.Dtos.Destination;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Wandermate.Mappers
 {
@@ -14,9 +15,12 @@ namespace Wandermate.Mappers
             return new DestinationDto{
                 DestinationId= destmodel.DestinationId,
                 Name=destmodel.Name,
-                Address=destmodel.Address,
-                City=destmodel.City,
-                Country=destmodel.Country,
+                Price=destmodel.Price,
+                Image=destmodel.Image,
+                Description=destmodel.Description,
+                Rating=destmodel.Rating,
+                FreeCancellation=destmodel.FreeCancellation,
+                ReserveNow=destmodel.ReserveNow,
                 DestinationReviews=destmodel.DestinationReviews.Select(c => c.ToDestinationReviewDto()).ToList()
                 
             };
@@ -25,10 +29,13 @@ namespace Wandermate.Mappers
 
         public static Destination ToDestinationRequestDto(this CreateDestinationRequestDto reqDto){
             return new Destination{
-                Name=reqDto.Name,
-                Address=reqDto.Address,
-                City=reqDto.City,
-                Country=reqDto.Country
+                 Name=reqDto.Name,
+                Price=reqDto.Price,
+                Image=reqDto.Image,
+                Description=reqDto.Description,
+                Rating=reqDto.Rating,
+                FreeCancellation=reqDto.FreeCancellation,
+                ReserveNow=reqDto.ReserveNow,
             };
         }
     }

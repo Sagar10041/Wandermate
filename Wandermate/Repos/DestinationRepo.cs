@@ -59,10 +59,13 @@ namespace Wandermate.Repos
             if (hotel == null){
                 return null;
             }
-            hotel.Name = updatedest.Name;
-                hotel.City=updatedest.City;
-                hotel.Address=updatedest.Address;
-                hotel.Country=updatedest.Country;
+                hotel.Name = updatedest.Name;
+                hotel.Rating=updatedest.Rating;
+                hotel.Image=updatedest.Image;
+                hotel.Description=updatedest.Description;
+                hotel.Price=updatedest.Price;
+                hotel.FreeCancellation=updatedest.FreeCancellation;
+                hotel.ReserveNow=updatedest.ReserveNow;
 
              await _context.SaveChangesAsync();
              return hotel;
