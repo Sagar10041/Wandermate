@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -10,7 +9,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Wandermate.Migrations
 {
     /// <inheritdoc />
-    public partial class Image_Datatype_To_List : Migration
+    public partial class revert : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -77,12 +76,12 @@ namespace Wandermate.Migrations
                     HotelId = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(type: "text", nullable: false),
-                    Price = table.Column<int>(type: "integer", nullable: false),
-                    Image = table.Column<List<string>>(type: "text[]", nullable: false),
+                    Price = table.Column<decimal>(type: "numeric", nullable: false),
+                    Image = table.Column<string>(type: "text", nullable: false),
+                    Description = table.Column<string>(type: "text", nullable: false),
                     Rating = table.Column<int>(type: "integer", nullable: false),
                     FreeCancellation = table.Column<bool>(type: "boolean", nullable: false),
-                    ReserveNow = table.Column<bool>(type: "boolean", nullable: false),
-                    Description = table.Column<string>(type: "text", nullable: false)
+                    ReserveNow = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -304,8 +303,8 @@ namespace Wandermate.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "054ab41b-9a3f-4f2f-9c66-6d81f3277300", null, "User", "USER" },
-                    { "b57518f9-c8f8-47b1-b46e-bb754d3efd13", null, "Admin", "ADMIN" }
+                    { "028e3b2c-35ab-45ba-9f57-6c4f2e7627bf", null, "Admin", "ADMIN" },
+                    { "5456b6da-8b95-4191-a72e-b4ff5be30679", null, "User", "USER" }
                 });
 
             migrationBuilder.CreateIndex(

@@ -60,12 +60,12 @@ namespace Wandermate.Repos
                 return null;
             }
             hotel.Name = updatehotel.Name;
-            hotel.Price = updatehotel.Price;
-            hotel.Image = updatehotel.Image;
-            hotel.Rating = updatehotel.Rating;
-            hotel.FreeCancellation = updatehotel.FreeCancellation;
-            hotel.ReserveNow = updatehotel.ReserveNow;
-            hotel.Description = updatehotel.Description;
+                hotel.Price=updatehotel.Price;
+                hotel.Image=updatehotel.Image;
+                hotel.Description=updatehotel.Description;
+                hotel.Rating=updatehotel.Rating;
+                hotel.FreeCancellation=updatehotel.FreeCancellation;
+                hotel.ReserveNow=updatehotel.ReserveNow;
 
              await _context.SaveChangesAsync();
              return hotel;

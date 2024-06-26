@@ -3710,11 +3710,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "d:\\Web Development\\IIC\\IIC Enrichment 2024\\WanderMate-Backend\\Wandermate\\Wandermate\\Wandermate.csproj",
+      "projectUniqueName": "D:\\Web Development\\IIC\\IIC Enrichment 2024\\WanderMate-Backend\\Wandermate\\Wandermate\\Wandermate.csproj",
       "projectName": "Wandermate",
-      "projectPath": "d:\\Web Development\\IIC\\IIC Enrichment 2024\\WanderMate-Backend\\Wandermate\\Wandermate\\Wandermate.csproj",
+      "projectPath": "D:\\Web Development\\IIC\\IIC Enrichment 2024\\WanderMate-Backend\\Wandermate\\Wandermate\\Wandermate.csproj",
       "packagesPath": "C:\\Users\\sonam\\.nuget\\packages\\",
-      "outputPath": "d:\\Web Development\\IIC\\IIC Enrichment 2024\\WanderMate-Backend\\Wandermate\\Wandermate\\obj\\",
+      "outputPath": "D:\\Web Development\\IIC\\IIC Enrichment 2024\\WanderMate-Backend\\Wandermate\\Wandermate\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\sonam\\AppData\\Roaming\\NuGet\\NuGet.Config",
