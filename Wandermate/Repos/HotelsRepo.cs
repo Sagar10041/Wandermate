@@ -7,6 +7,8 @@ using Wandermate.Data;
 using Wandermate.Dtos.Hotels;
 using Wandermate.Interface;
 using Wandermate.Models;
+using Microsoft.AspNetCore.Identity;
+using Wandermate.Extensions;
 
 namespace Wandermate.Repos
 {
@@ -40,7 +42,7 @@ namespace Wandermate.Repos
 
         public async Task<List<Hotels>> GetAllAsync()
         {
-            return await _context.Hotels.Include(c=>c.HotelReviews).ToListAsync();
+            return await _context.Hotels.Include(c=>c.HotelReviews).ThenInclude(x=>x.AppUser).ToListAsync();
         }
 
         public async Task<Hotels?> GetByIdAsync(int id)
@@ -71,6 +73,10 @@ namespace Wandermate.Repos
              return hotel;
 
 
+        }
+         public async Task<Hotels?> GetByNameAsync(string name)
+        {
+             return await _context.Hotels.FirstOrDefaultAsync(s => s.Name == name);
         }
     }
 }

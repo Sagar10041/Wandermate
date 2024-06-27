@@ -13,8 +13,12 @@ namespace Wandermate.Dtos.HotelReviews
 
         public string ReviewText { get; set; } =String.Empty;
 
-        public DateTime CreatedOn {get; set;} = DateTime.Now;
+        public DateTime CreatedOn {get; set;} = DateTime.UtcNow;
+
+        public string CreatedBy {get; set;} = string.Empty;
         
         public int? Id {get; set;}
+
+        
     }
 }

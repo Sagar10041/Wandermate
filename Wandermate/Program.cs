@@ -102,6 +102,7 @@ builder.Services.AddScoped<DestinationInterface,DestinationRepo>();
 builder.Services.AddScoped<RoomsInterface,RoomsRepo>();
 builder.Services.AddScoped<RoomReviewsInterface,RoomReviewsRepos>();
 builder.Services.AddScoped<DestinationBookingsInterface,DestinationBookingRepo>();
+builder.Services.AddScoped<HotelBookingsInterface,HotelBookingRepo>();
 
 var app = builder.Build();
 

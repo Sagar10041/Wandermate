@@ -7,6 +7,7 @@ using Wandermate.Data;
 using Wandermate.Interface;
 using Wandermate.Models;
 
+
 namespace Wandermate.Repos
 {
     public class HotelReviewsRepos : HotelreviewsInterface
@@ -38,12 +39,12 @@ namespace Wandermate.Repos
 
         public async Task<List<HotelReviews>> GetAllAsync()
         {
-            return await _context.HotelReviews.ToListAsync();
+            return await _context.HotelReviews.Include(x=>x.AppUser).ToListAsync();
         }
 
         public async Task<HotelReviews?> GetByIdAsync(int id)
         {
-            return await _context.HotelReviews.FindAsync(id);
+            return await _context.HotelReviews.Include(x=>x.AppUser).FirstOrDefaultAsync(x=>x.Id==id);
         }
 
         public async Task<HotelReviews?> UpdateAsync(int id, HotelReviews reviews)

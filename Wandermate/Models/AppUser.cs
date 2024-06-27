@@ -11,5 +11,6 @@ namespace Wandermate.Models
     {
         public List<DestinationBooking> DestinationBookings {get; set;} = new List<DestinationBooking>();
         
+        public List<HotelBooking> HotelBookings {get; set;} = new List<HotelBooking>();
     }
 }

@@ -28,5 +28,6 @@ namespace Wandermate.Models
         public bool ReserveNow {get; set;}
 
     public List<HotelReviews> HotelReviews {get; set;} =new List<HotelReviews>();
+     public List<HotelBooking> HotelBookings {get; set;} = new List<HotelBooking>();
     }
 }

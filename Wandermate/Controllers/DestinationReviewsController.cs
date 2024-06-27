@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Wandermate.Data;
 using Wandermate.Dtos.DestinationReviews;
@@ -24,6 +25,7 @@ namespace Wandermate.Controllers
         }
 
         [HttpGet]
+        [Authorize]
 
         public async Task<IActionResult> GetAll(){
             var destreviews = await _contextrepo.GetAllAsync();
@@ -32,6 +34,7 @@ namespace Wandermate.Controllers
         }
         
         [HttpGet("{id}")]
+        [Authorize]
 
         public async Task <IActionResult> GetById([FromRoute] int id){
             var review = await _contextrepo.GetByIdAsync(id);
@@ -43,6 +46,7 @@ namespace Wandermate.Controllers
         }
 
         [HttpPost("{id}")]
+        [Authorize]
 
         public async Task<IActionResult> Create([FromRoute] int id, DestinationReviewCreateDto revDto){
 
@@ -56,6 +60,7 @@ namespace Wandermate.Controllers
 
         [HttpPut]
         [Route("{id}")]
+        [Authorize]
         public async Task<IActionResult> Update([FromRoute] int id, [FromBody] DestinationreviewsUpdateDto updatereviews){
             var review = await _contextrepo.UpdateAsync(id, updatereviews.ToReviewsUpdate());
             if(review == null){
@@ -67,6 +72,7 @@ namespace Wandermate.Controllers
 
         [HttpDelete]
         [Route("{id:int}")]
+        [Authorize]
         public async Task <IActionResult> Delete([FromRoute] int id){
 
             var hotel = await _contextrepo.DeleteAsync(id);
