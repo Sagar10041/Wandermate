@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Wandermate.Data;
@@ -12,9 +13,11 @@ using Wandermate.Data;
 namespace Wandermate.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240627081007_tesai")]
+    partial class tesai
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,13 +54,13 @@ namespace Wandermate.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "3a500596-311f-4e6c-9fc3-b6376cd072f8",
+                            Id = "f98655d7-6e96-44f0-a76b-b6e96e178392",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "0327602d-895b-44a6-b667-1b1ce4bd4fde",
+                            Id = "8b46e097-cb30-499d-b78e-8afb904ff7af",
                             Name = "User",
                             NormalizedName = "USER"
                         });

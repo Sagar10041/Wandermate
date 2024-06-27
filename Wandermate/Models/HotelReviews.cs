@@ -16,9 +16,13 @@ namespace Wandermate.Models
 
         public string ReviewText { get; set; } =String.Empty;
 
-        public DateTime CreatedOn {get; set;} = DateTime.Now;
+        public DateTime CreatedOn {get; set;} = DateTime.UtcNow;
         
         public int? Id {get; set;}
         public Hotels? Hotels {get; set;}
+
+        public string? AppUserId{get; set;}
+
+        public AppUser? AppUser {get; set;}
     }
 }

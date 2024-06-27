@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Wandermate.Interface;
 
 
+
 namespace Wandermate.Controllers
 {
     [Route("api/hotels")]
@@ -29,7 +30,7 @@ namespace Wandermate.Controllers
 
         public async Task<IActionResult> GetAll(){
             var hotels = await _hotelsrepo.GetAllAsync();
-            var hoteldto= hotels.Select(s=> s.ToHotelsDto());
+            var hoteldto= hotels.Select(s=> s.ToHotelsDto()).ToList();
             return Ok(hoteldto);
         }
 
