@@ -39,12 +39,12 @@ namespace Wandermate.Repos
 
         public async Task<List<DestinationReviews>> GetAllAsync()
         {
-            return await _context.DestinationReviews.ToListAsync();
+            return await _context.DestinationReviews.Include(x=>x.AppUser).ToListAsync();
         }
 
         public async Task<DestinationReviews?> GetByIdAsync(int id)
         {
-            return await _context.DestinationReviews.FindAsync(id);
+            return await _context.DestinationReviews.Include(x=>x.AppUser).FirstOrDefaultAsync(x=>x.Id==id);
         }
 
         public async Task<DestinationReviews?> UpdateAsync(int id, DestinationReviews reviews)

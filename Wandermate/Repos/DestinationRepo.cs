@@ -40,7 +40,7 @@ namespace Wandermate.Repos
 
         public async Task<List<Destination>> GetAllAsync()
         {
-            return await _context.Destination.Include(c=>c.DestinationReviews).ToListAsync();
+            return await _context.Destination.Include(c=>c.DestinationReviews).ThenInclude(x=>x.AppUser).ToListAsync();
         }
 
         public async Task<Destination?> GetByIdAsync(int id)

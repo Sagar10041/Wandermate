@@ -1,11 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Wandermate.Dtos.Accounts;
+using Wandermate.Extensions;
 using Wandermate.Interface;
 using Wandermate.Models;
 
@@ -45,7 +48,8 @@ namespace Wandermate.Controllers
                 {
                     UserName = user.UserName,
                     Email = user.Email,
-                    Token = _tokenService.CreateToken(user)
+                    Token = _tokenService.CreateToken(user),
+                    UserId=user.Id,
                 }
             );
         }
@@ -94,6 +98,32 @@ namespace Wandermate.Controllers
             {
                 return StatusCode(500, e);
             }
+        }
+
+        [HttpPut("userUpdate")]
+        [Authorize]
+
+        public async Task <IActionResult> UpdateUser (UserUpdateDto model){
+            var username =User.GetUsername();
+            var user = await _userManager.FindByNameAsync(username);
+
+            if (user == null) {
+                return NotFound("user  not found");
+            }
+
+            user.Email = model.Email;
+
+            var result = await _userManager.UpdateAsync(user);
+            if (!result.Succeeded)
+        {
+            return BadRequest("Failed to update user details.");
+        }
+
+       
+
+        return Ok("User details Updated");
+
+
         }
     }
 }

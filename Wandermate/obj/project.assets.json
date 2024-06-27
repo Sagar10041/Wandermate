@@ -3483,16 +3483,11 @@
     ]
   },
   "packageFolders": {
-<<<<<<< HEAD
     "C:\\Users\\sonam\\.nuget\\packages\\": {}
-=======
-    "/Users/sagar_xeetree/.nuget/packages/": {}
->>>>>>> 44161a12dad66c7b10fb48e6f52434a9e6bd4c26
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
       "projectUniqueName": "D:\\Web Development\\IIC\\IIC Enrichment 2024\\WanderMate-Backend\\Wandermate\\Wandermate\\Wandermate.csproj",
       "projectName": "Wandermate",
       "projectPath": "D:\\Web Development\\IIC\\IIC Enrichment 2024\\WanderMate-Backend\\Wandermate\\Wandermate\\Wandermate.csproj",
@@ -3502,16 +3497,6 @@
       "configFilePaths": [
         "C:\\Users\\sonam\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-=======
-      "projectUniqueName": "/Users/sagar_xeetree/Webapp/Wandermate/Wandermate.csproj",
-      "projectName": "Wandermate",
-      "projectPath": "/Users/sagar_xeetree/Webapp/Wandermate/Wandermate.csproj",
-      "packagesPath": "/Users/sagar_xeetree/.nuget/packages/",
-      "outputPath": "/Users/sagar_xeetree/Webapp/Wandermate/obj/",
-      "projectStyle": "PackageReference",
-      "configFilePaths": [
-        "/Users/sagar_xeetree/.nuget/NuGet/NuGet.Config"
->>>>>>> 44161a12dad66c7b10fb48e6f52434a9e6bd4c26
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -3614,12 +3599,16 @@
             "privateAssets": "all"
           }
         },
-<<<<<<< HEAD
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
-=======
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.302/PortableRuntimeIdentifierGraph.json"
->>>>>>> 44161a12dad66c7b10fb48e6f52434a9e6bd4c26
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file D:\\Web Development\\IIC\\IIC Enrichment 2024\\WanderMate-Backend\\Wandermate\\Wandermate\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Wandermate.Data;
 using Wandermate.Dtos.DestinationReviews;
+using Wandermate.Extensions;
 using Wandermate.Interface;
 using Wandermate.Mappers;
+using Wandermate.Models;
 
 
 namespace Wandermate.Controllers
@@ -18,10 +21,13 @@ namespace Wandermate.Controllers
     {
          private readonly DestinationReviewsInterface _contextrepo;
         private readonly DestinationInterface _dest;
-        public DestinationReviewsController(DestinationReviewsInterface context, DestinationInterface dest)
+
+         private readonly UserManager<AppUser> _userManager;
+        public DestinationReviewsController(DestinationReviewsInterface context, DestinationInterface dest, UserManager<AppUser> userManager)
         {
             _contextrepo = context;
             _dest=dest;
+            _userManager=userManager;
         }
 
         [HttpGet]
@@ -51,9 +57,16 @@ namespace Wandermate.Controllers
         public async Task<IActionResult> Create([FromRoute] int id, DestinationReviewCreateDto revDto){
 
             if (!await _dest.DestinationExists(id)){
-                return BadRequest("Destination doesnot exist");
+                return BadRequest("Destination does not exist");
             }
+            var username = User.GetUsername();
+
+            var appUser = await _userManager.FindByNameAsync(username);
+            
             var review = revDto.ToReviewsCreate(id);
+
+            review.AppUserId=appUser.Id;
+    
             await _contextrepo.CreateAsync(review);
             return CreatedAtAction(nameof(GetById), new {id = review.Id }, review.ToDestinationReviewDto());
         }

@@ -9,19 +9,11 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Wandermate
 build_property.RootNamespace = Wandermate
-<<<<<<< HEAD
 build_property.ProjectDir = D:\Web Development\IIC\IIC Enrichment 2024\WanderMate-Backend\Wandermate\Wandermate\
-=======
-build_property.ProjectDir = /Users/sagar_xeetree/Webapp/Wandermate/
->>>>>>> 44161a12dad66c7b10fb48e6f52434a9e6bd4c26
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-<<<<<<< HEAD
 build_property.MSBuildProjectDirectory = D:\Web Development\IIC\IIC Enrichment 2024\WanderMate-Backend\Wandermate\Wandermate
-=======
-build_property.MSBuildProjectDirectory = /Users/sagar_xeetree/Webapp/Wandermate
->>>>>>> 44161a12dad66c7b10fb48e6f52434a9e6bd4c26
 build_property._RazorSourceGeneratorDebug = 
