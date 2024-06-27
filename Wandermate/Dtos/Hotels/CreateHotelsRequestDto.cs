@@ -11,7 +11,7 @@ namespace Wandermate.Dtos.Hotels
 
         public decimal Price { get; set; }
 
-        public List<string> Image { get; set; } = new List<String>();
+        public List<string> Image { get; set; } = new List<string>();
 
         public string Description { get; set; } = String.Empty;
 

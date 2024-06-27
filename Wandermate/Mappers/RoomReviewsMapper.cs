@@ -15,7 +15,7 @@ namespace Wandermate.Mappers
                 Rating= roomreviewsModel.Rating,
                 ReviewText=roomreviewsModel.ReviewText,
                 CreatedOn=roomreviewsModel.CreatedOn,
-                RoomId=roomreviewsModel.RoomId
+               Id=roomreviewsModel.Id
 
             };
         }
@@ -24,7 +24,7 @@ namespace Wandermate.Mappers
             return new RoomReviews{
                 Rating= review.Rating,
                 ReviewText=review.ReviewText,
-                RoomId=roomId
+                Id=roomId
 
             };
         }

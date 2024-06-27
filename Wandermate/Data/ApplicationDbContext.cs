@@ -31,7 +31,7 @@ namespace Wandermate.Data
             base.OnModelCreating(builder);
 
             
-            builder.Entity<DestinationBooking>(x => x.HasKey(p => new { p.AppUserId, p.DestinationId }));
+            builder.Entity<DestinationBooking>(x => x.HasKey(p => new { p.AppUserId, p.Id }));
 
             builder.Entity<DestinationBooking>()
                 .HasOne(u => u.AppUser)
@@ -41,7 +41,7 @@ namespace Wandermate.Data
             builder.Entity<DestinationBooking>()
                 .HasOne(u => u.Destination)
                 .WithMany(u => u.DestinationBookings)
-                .HasForeignKey(p => p.DestinationId);
+                .HasForeignKey(p => p.Id);
 
             List<IdentityRole> roles = new List<IdentityRole>{
                 new IdentityRole{

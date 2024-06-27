@@ -49,7 +49,7 @@ namespace Wandermate.Controllers
         public async Task <IActionResult> Create([FromBody] CreateDestinationRequestDto destrqDto){
             var destmodel = destrqDto.ToDestinationRequestDto();
             await _destrepo.CreateAsync(destmodel);
-            return CreatedAtAction(nameof(GetById),new {id=destmodel.DestinationId},destmodel.ToDestinationDto());
+            return CreatedAtAction(nameof(GetById),new {id=destmodel.Id},destmodel.ToDestinationDto());
         }
         
         [HttpPut]

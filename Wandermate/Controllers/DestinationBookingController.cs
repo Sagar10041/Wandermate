@@ -56,7 +56,7 @@ namespace Wandermate.Controllers
 
             var destBookingModel = new DestinationBooking
             {
-                DestinationId = dest.DestinationId,
+               Id = dest.Id,
                 AppUserId = appUser.Id
             };
 

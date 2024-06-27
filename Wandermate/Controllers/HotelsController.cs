@@ -52,7 +52,7 @@ namespace Wandermate.Controllers
         public async Task <IActionResult> Create([FromBody] CreateHotelsRequestDto hotelrqDto){
             var hotelmodel = hotelrqDto.ToHotelRequestDto();
             await _hotelsrepo.CreateAsync(hotelmodel);
-            return CreatedAtAction(nameof(GetById),new {id=hotelmodel.HotelId},hotelmodel.ToHotelsDto());
+            return CreatedAtAction(nameof(GetById),new {id=hotelmodel.Id},hotelmodel.ToHotelsDto());
         }
         
         [HttpPut]

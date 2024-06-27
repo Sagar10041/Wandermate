@@ -50,7 +50,7 @@ namespace Wandermate.Controllers
             }
             var review = revDto.ToReviewsCreate(id);
             await _contextrepo.CreateAsync(review);
-            return CreatedAtAction(nameof(GetById), new {id = review.HotelId }, review.ToHotelReviewDto());
+            return CreatedAtAction(nameof(GetById), new {id = review.Id }, review.ToHotelReviewDto());
         }
 
         [HttpPut]

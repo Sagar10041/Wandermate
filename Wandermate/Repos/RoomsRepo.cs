@@ -27,7 +27,7 @@ namespace Wandermate.Repos
 
         public async Task<Rooms?> DeleteAsync(int id)
         {
-            var roommodels = await _context.Rooms.FirstOrDefaultAsync(x => x.RoomId == id);
+            var roommodels = await _context.Rooms.FirstOrDefaultAsync(x => x.Id == id);
 
             if (roommodels == null){
                 return null;
@@ -45,17 +45,17 @@ namespace Wandermate.Repos
 
         public async Task<Rooms?> GetByIdAsync(int id)
         {
-            return await _context.Rooms.Include(c=>c.RoomReviews).FirstOrDefaultAsync(i => i.RoomId == id);
+            return await _context.Rooms.Include(c=>c.RoomReviews).FirstOrDefaultAsync(i => i.Id == id);
         }
 
         public Task<bool> RoomExists(int id)
         {
-            return _context.Rooms.AnyAsync(s=> s.RoomId == id);
+            return _context.Rooms.AnyAsync(s=> s.Id == id);
         }
 
         public async Task<Rooms?> UpdateAsync(int id, RoomsUpdateRequestDto updateroom)
         {
-            var room = await _context.Rooms.FirstOrDefaultAsync(x=> x.RoomId ==id);
+            var room = await _context.Rooms.FirstOrDefaultAsync(x=> x.Id ==id);
             if (room == null){
                 return null;
             }

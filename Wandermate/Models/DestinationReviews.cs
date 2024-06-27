@@ -18,7 +18,7 @@ namespace Wandermate.Models
 
         public DateTime CreatedOn {get; set;} = DateTime.Now;
         
-        public int? DestinationId {get; set;}
+        public int? Id {get; set;}
         public Destination? Destination {get; set;}
     }
 }

@@ -12,7 +12,7 @@ namespace Wandermate.Mappers
         public static RoomsDto ToRoomsDto(this Rooms roommodel){
 
             return new RoomsDto{
-                RoomId= roommodel.RoomId,
+                Id= roommodel.Id,
                 Type=roommodel.Type,
                 Beds=roommodel.Beds,
                 Price=roommodel.Price,

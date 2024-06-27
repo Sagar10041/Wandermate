@@ -27,7 +27,7 @@ namespace Wandermate.Repos
 
         public async Task<Destination?> DeleteAsync(int id)
         {
-            var destmodels = await _context.Destination.FirstOrDefaultAsync(x => x.DestinationId == id);
+            var destmodels = await _context.Destination.FirstOrDefaultAsync(x => x.Id == id);
 
             if (destmodels == null){
                 return null;
@@ -45,24 +45,27 @@ namespace Wandermate.Repos
 
         public async Task<Destination?> GetByIdAsync(int id)
         {
-            return await _context.Destination.Include(c=>c.DestinationReviews).FirstOrDefaultAsync(i => i.DestinationId == id);
+            return await _context.Destination.Include(c=>c.DestinationReviews).FirstOrDefaultAsync(i => i.Id == id);
         }
 
         public Task<bool> DestinationExists(int id)
         {
-            return _context.Destination.AnyAsync(s=> s.DestinationId == id);
+            return _context.Destination.AnyAsync(s=> s.Id == id);
         }
 
         public async Task<Destination?> UpdateAsync(int id, DestinationUpdateRequestDto updatedest)
         {
-            var hotel = await _context.Destination.FirstOrDefaultAsync(x=> x.DestinationId ==id);
+            var hotel = await _context.Destination.FirstOrDefaultAsync(x=> x.Id ==id);
             if (hotel == null){
                 return null;
             }
-            hotel.Name = updatedest.Name;
-                hotel.City=updatedest.City;
-                hotel.Address=updatedest.Address;
-                hotel.Country=updatedest.Country;
+                hotel.Name = updatedest.Name;
+                hotel.Rating=updatedest.Rating;
+                hotel.Image=updatedest.Image;
+                hotel.Description=updatedest.Description;
+                hotel.Price=updatedest.Price;
+                hotel.FreeCancellation=updatedest.FreeCancellation;
+                hotel.ReserveNow=updatedest.ReserveNow;
 
              await _context.SaveChangesAsync();
              return hotel;

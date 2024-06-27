@@ -12,7 +12,7 @@ namespace Wandermate.Mappers
         public static HotelsDto ToHotelsDto(this Hotels hotelmodel){
 
             return new HotelsDto{
-                HotelId= hotelmodel.HotelId,
+               Id= hotelmodel.Id,
                 Name=hotelmodel.Name,
                 Price=hotelmodel.Price,
                 Image=hotelmodel.Image,

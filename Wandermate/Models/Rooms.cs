@@ -11,7 +11,7 @@ namespace Wandermate.Models
     public class Rooms
     {
         [Key]    
-    public int RoomId { get; set; }
+    public int Id { get; set; }
 
     
     public string Type { get; set; } = String.Empty;
