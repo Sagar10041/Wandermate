@@ -51,13 +51,13 @@ namespace Wandermate.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "3a500596-311f-4e6c-9fc3-b6376cd072f8",
+                            Id = "2d356ae5-6b68-4df5-889e-b5b3cc566c05",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "0327602d-895b-44a6-b667-1b1ce4bd4fde",
+                            Id = "56031e4f-15f2-4ea9-80e8-22e611e37b81",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -339,10 +339,6 @@ namespace Wandermate.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ReviewId"));
 
-                    b.Property<string>("AppUserId")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("timestamp with time zone");
 
@@ -360,8 +356,6 @@ namespace Wandermate.Migrations
                         .HasColumnType("text");
 
                     b.HasKey("ReviewId");
-
-                    b.HasIndex("AppUserId");
 
                     b.HasIndex("HotelsId");
 
@@ -559,17 +553,9 @@ namespace Wandermate.Migrations
 
             modelBuilder.Entity("Wandermate.Models.HotelReviews", b =>
                 {
-                    b.HasOne("Wandermate.Models.AppUser", "AppUser")
-                        .WithMany()
-                        .HasForeignKey("AppUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Wandermate.Models.Hotels", "Hotels")
                         .WithMany("HotelReviews")
                         .HasForeignKey("HotelsId");
-
-                    b.Navigation("AppUser");
 
                     b.Navigation("Hotels");
                 });
