@@ -17,6 +17,7 @@ namespace Wandermate.Mappers
                 Rating= destinationreviewsModel.Rating,
                 ReviewText=destinationreviewsModel.ReviewText,
                 CreatedOn=destinationreviewsModel.CreatedOn,
+                 CreatedBy=destinationreviewsModel.AppUser.UserName,
                Id=destinationreviewsModel.Id
 
             };

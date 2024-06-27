@@ -51,13 +51,13 @@ namespace Wandermate.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "7bcb1600-4d35-4cbd-a369-d59f2d8198d1",
+                            Id = "852437cd-2662-4166-bb27-bad06f1229ee",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "a57c9674-de56-434a-9122-974601bbb089",
+                            Id = "0e72f553-7800-4660-88d3-200f2c6ad08f",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -293,6 +293,9 @@ namespace Wandermate.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ReviewId"));
 
+                    b.Property<string>("AppUserId")
+                        .HasColumnType("text");
+
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("timestamp with time zone");
 
@@ -310,6 +313,8 @@ namespace Wandermate.Migrations
                         .HasColumnType("text");
 
                     b.HasKey("ReviewId");
+
+                    b.HasIndex("AppUserId");
 
                     b.HasIndex("DestinationId");
 
@@ -530,9 +535,15 @@ namespace Wandermate.Migrations
 
             modelBuilder.Entity("Wandermate.Models.DestinationReviews", b =>
                 {
+                    b.HasOne("Wandermate.Models.AppUser", "AppUser")
+                        .WithMany()
+                        .HasForeignKey("AppUserId");
+
                     b.HasOne("Wandermate.Models.Destination", "Destination")
                         .WithMany("DestinationReviews")
                         .HasForeignKey("DestinationId");
+
+                    b.Navigation("AppUser");
 
                     b.Navigation("Destination");
                 });

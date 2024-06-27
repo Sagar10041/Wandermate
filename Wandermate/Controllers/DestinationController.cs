@@ -26,7 +26,7 @@ namespace Wandermate.Controllers
 
         public async Task<IActionResult> GetAll(){
             var dest = await _destrepo.GetAllAsync();
-            var destdto= dest.Select(s=> s.ToDestinationDto());
+            var destdto= dest.Select(s=> s.ToDestinationDto()).ToList();
             return Ok(destdto);
         }
 
