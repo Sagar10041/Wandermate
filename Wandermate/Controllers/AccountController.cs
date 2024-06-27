@@ -45,7 +45,8 @@ namespace Wandermate.Controllers
                 {
                     UserName = user.UserName,
                     Email = user.Email,
-                    Token = _tokenService.CreateToken(user)
+                    Token = _tokenService.CreateToken(user),
+                    UserId=user.Id,
                 }
             );
         }
