@@ -27,14 +27,14 @@ namespace Wandermate.Data
         public DbSet <RoomReviews> RoomReviews {get; set;}
         public DbSet <DestinationBooking> DestinationBookings {get; set;}
 
-        public DbSet <HotelBooking> HotelBooking {get; set;}
+        public DbSet <HotelBooking> HotelBookings {get; set;}
 
         protected override void OnModelCreating(ModelBuilder builder){
             base.OnModelCreating(builder);
 
             
             builder.Entity<DestinationBooking>(x => x.HasKey(p => new { p.AppUserId, p.Id }));
-            builder.Entity<HotelBooking>(x => x.HasKey(p => new { p.AppUserId, p.Id }));
+            builder.Entity<HotelBooking>(x => x.HasKey(q => new { q.AppUserId, q.Id }));
 
             builder.Entity<DestinationBooking>()
                 .HasOne(u => u.AppUser)
@@ -43,7 +43,7 @@ namespace Wandermate.Data
 
              builder.Entity<HotelBooking>()
                 .HasOne(u => u.AppUser)
-                .WithMany(u => u.HotelBooking)
+                .WithMany(u => u.HotelBookings)
                 .HasForeignKey(p => p.AppUserId);
 
             builder.Entity<DestinationBooking>()
@@ -53,7 +53,7 @@ namespace Wandermate.Data
 
             builder.Entity<HotelBooking>()
                 .HasOne(u => u.Hotels)
-                .WithMany(u => u.HotelBooking)
+                .WithMany(u => u.HotelBookings)
                 .HasForeignKey(p => p.Id);
 
             List<IdentityRole> roles = new List<IdentityRole>{

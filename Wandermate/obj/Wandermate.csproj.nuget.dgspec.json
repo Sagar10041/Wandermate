@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\WebAPP\\wandermate\\Wandermate.csproj": {}
+    "/Users/sagar_xeetree/Webapp/Wandermate/Wandermate.csproj": {}
   },
   "projects": {
-    "E:\\WebAPP\\wandermate\\Wandermate.csproj": {
+    "/Users/sagar_xeetree/Webapp/Wandermate/Wandermate.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\WebAPP\\wandermate\\Wandermate.csproj",
+        "projectUniqueName": "/Users/sagar_xeetree/Webapp/Wandermate/Wandermate.csproj",
         "projectName": "Wandermate",
-        "projectPath": "E:\\WebAPP\\wandermate\\Wandermate.csproj",
-        "packagesPath": "C:\\Users\\sagar\\.nuget\\packages\\",
-        "outputPath": "E:\\WebAPP\\wandermate\\obj\\",
+        "projectPath": "/Users/sagar_xeetree/Webapp/Wandermate/Wandermate.csproj",
+        "packagesPath": "/Users/sagar_xeetree/.nuget/packages/",
+        "outputPath": "/Users/sagar_xeetree/Webapp/Wandermate/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\sagar\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/Users/sagar_xeetree/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -115,7 +115,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.302/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

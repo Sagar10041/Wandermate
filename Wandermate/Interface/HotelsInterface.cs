@@ -17,6 +17,6 @@ namespace Wandermate.Interface
         Task <Hotels?> DeleteAsync (int id);
 
         Task<bool> HotelExists(int id);
-
+         Task<Hotels?> GetByNameAsync(string name);
     }
 }

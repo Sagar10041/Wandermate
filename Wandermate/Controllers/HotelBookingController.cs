@@ -14,7 +14,7 @@ using Wandermate.Extensions;
 namespace Wandermate.Controllers
 { [Route("api/HotelBooking")]
     [ApiController]
-    public class HotelBookingController
+    public class HotelBookingController : ControllerBase
     {
         private readonly UserManager<AppUser> _userManager;
 
@@ -55,7 +55,7 @@ namespace Wandermate.Controllers
 
             if (userBooking.Any(e => e.Name.ToLower() == name.ToLower())) return BadRequest("Cannot add same hotel to bookings");
 
-            var destBookingModel = new DestinationBooking
+            var hotelBooking = new HotelBooking
             {
                Id = dest.Id,
                 AppUserId = appUser.Id

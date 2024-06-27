@@ -20,7 +20,7 @@ namespace Wandermate.Repos
 
         public async Task<List<Hotels>> GetUserBookings(AppUser user)
         {
-             return await _context.HotelBooking.Where(u => u.AppUserId == user.Id)
+             return await _context.HotelBookings.Where(u => u.AppUserId == user.Id)
             .Select(hotel => new Hotels
             {
                 Id  = hotel.Id ,
@@ -37,21 +37,21 @@ namespace Wandermate.Repos
 
           public async Task<HotelBooking> CreateAsync(HotelBooking hotelBooking)
         {
-            await _context.HotelBooking.AddAsync(hotelBooking);
+            await _context.HotelBookings.AddAsync(hotelBooking);
             await _context.SaveChangesAsync();
             return hotelBooking;
         }
 
         public  async Task<HotelBooking> DeleteBookings(AppUser appUser, string name)
         {
-            var hotelBookingModel = await _context.HotelBooking.FirstOrDefaultAsync(x => x.AppUserId == appUser.Id && x.Hotels.Name.ToLower() == name.ToLower());
+            var hotelBookingModel = await _context.HotelBookings.FirstOrDefaultAsync(x => x.AppUserId == appUser.Id && x.Hotels.Name.ToLower() == name.ToLower());
 
             if (hotelBookingModel == null)
             {
                 return null;
             }
 
-            _context.HotelBooking.Remove(hotelBookingModel);
+            _context.HotelBookings.Remove(hotelBookingModel);
             await _context.SaveChangesAsync();
             return hotelBookingModel;
         }
