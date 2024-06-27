@@ -51,13 +51,21 @@ namespace Wandermate.Migrations
                     b.HasData(
                         new
                         {
+<<<<<<< HEAD
+                            Id = "d976a669-5484-4b1a-b07b-289db0c1d32f",
+=======
                             Id = "3a500596-311f-4e6c-9fc3-b6376cd072f8",
+>>>>>>> 44161a12dad66c7b10fb48e6f52434a9e6bd4c26
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
+<<<<<<< HEAD
+                            Id = "51697999-6185-4d58-ab7a-536a7bf158ea",
+=======
                             Id = "0327602d-895b-44a6-b667-1b1ce4bd4fde",
+>>>>>>> 44161a12dad66c7b10fb48e6f52434a9e6bd4c26
                             Name = "User",
                             NormalizedName = "USER"
                         });

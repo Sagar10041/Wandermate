@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Wandermate.Migrations
 {
     /// <inheritdoc />
-    public partial class imgessssssss : Migration
+    public partial class someChanges : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -58,23 +58,7 @@ namespace Wandermate.Migrations
                 name: "Destination",
                 columns: table => new
                 {
-                    DestinationId = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Name = table.Column<string>(type: "text", nullable: false),
-                    Address = table.Column<string>(type: "text", nullable: false),
-                    City = table.Column<string>(type: "text", nullable: false),
-                    Country = table.Column<string>(type: "text", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Destination", x => x.DestinationId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Hotels",
-                columns: table => new
-                {
-                    HotelId = table.Column<int>(type: "integer", nullable: false)
+                    Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(type: "text", nullable: false),
                     Price = table.Column<decimal>(type: "numeric", nullable: false),
@@ -86,14 +70,33 @@ namespace Wandermate.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Hotels", x => x.HotelId);
+                    table.PrimaryKey("PK_Destination", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Hotels",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "text", nullable: false),
+                    Price = table.Column<decimal>(type: "numeric", nullable: false),
+                    Image = table.Column<List<string>>(type: "text[]", nullable: false),
+                    Description = table.Column<string>(type: "text", nullable: false),
+                    Rating = table.Column<int>(type: "integer", nullable: false),
+                    FreeCancellation = table.Column<bool>(type: "boolean", nullable: false),
+                    ReserveNow = table.Column<bool>(type: "boolean", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Hotels", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Rooms",
                 columns: table => new
                 {
-                    RoomId = table.Column<int>(type: "integer", nullable: false)
+                    Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Type = table.Column<string>(type: "text", nullable: false),
                     Beds = table.Column<int>(type: "integer", nullable: false),
@@ -101,7 +104,7 @@ namespace Wandermate.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Rooms", x => x.RoomId);
+                    table.PrimaryKey("PK_Rooms", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -215,11 +218,11 @@ namespace Wandermate.Migrations
                 columns: table => new
                 {
                     AppUserId = table.Column<string>(type: "text", nullable: false),
-                    DestinationId = table.Column<int>(type: "integer", nullable: false)
+                    Id = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_DestinationBooking", x => new { x.AppUserId, x.DestinationId });
+                    table.PrimaryKey("PK_DestinationBooking", x => new { x.AppUserId, x.Id });
                     table.ForeignKey(
                         name: "FK_DestinationBooking_AspNetUsers_AppUserId",
                         column: x => x.AppUserId,
@@ -227,10 +230,10 @@ namespace Wandermate.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_DestinationBooking_Destination_DestinationId",
-                        column: x => x.DestinationId,
+                        name: "FK_DestinationBooking_Destination_Id",
+                        column: x => x.Id,
                         principalTable: "Destination",
-                        principalColumn: "DestinationId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -243,6 +246,7 @@ namespace Wandermate.Migrations
                     Rating = table.Column<int>(type: "integer", nullable: false),
                     ReviewText = table.Column<string>(type: "text", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    Id = table.Column<int>(type: "integer", nullable: true),
                     DestinationId = table.Column<int>(type: "integer", nullable: true)
                 },
                 constraints: table =>
@@ -252,7 +256,7 @@ namespace Wandermate.Migrations
                         name: "FK_DestinationReviews_Destination_DestinationId",
                         column: x => x.DestinationId,
                         principalTable: "Destination",
-                        principalColumn: "DestinationId");
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -264,17 +268,17 @@ namespace Wandermate.Migrations
                     Rating = table.Column<int>(type: "integer", nullable: false),
                     ReviewText = table.Column<string>(type: "text", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    HotelId = table.Column<int>(type: "integer", nullable: true),
-                    HotelsHotelId = table.Column<int>(type: "integer", nullable: true)
+                    Id = table.Column<int>(type: "integer", nullable: true),
+                    HotelsId = table.Column<int>(type: "integer", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_HotelReviews", x => x.ReviewId);
                     table.ForeignKey(
-                        name: "FK_HotelReviews_Hotels_HotelsHotelId",
-                        column: x => x.HotelsHotelId,
+                        name: "FK_HotelReviews_Hotels_HotelsId",
+                        column: x => x.HotelsId,
                         principalTable: "Hotels",
-                        principalColumn: "HotelId");
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -286,17 +290,17 @@ namespace Wandermate.Migrations
                     Rating = table.Column<int>(type: "integer", nullable: false),
                     ReviewText = table.Column<string>(type: "text", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    RoomId = table.Column<int>(type: "integer", nullable: true),
-                    RoomsRoomId = table.Column<int>(type: "integer", nullable: true)
+                    Id = table.Column<int>(type: "integer", nullable: true),
+                    RoomsId = table.Column<int>(type: "integer", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_RoomReviews", x => x.ReviewId);
                     table.ForeignKey(
-                        name: "FK_RoomReviews_Rooms_RoomsRoomId",
-                        column: x => x.RoomsRoomId,
+                        name: "FK_RoomReviews_Rooms_RoomsId",
+                        column: x => x.RoomsId,
                         principalTable: "Rooms",
-                        principalColumn: "RoomId");
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.InsertData(
@@ -304,8 +308,8 @@ namespace Wandermate.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "2cd86342-b3bc-4081-8ce6-43a788100f9f", null, "User", "USER" },
-                    { "ddeb7396-272f-4103-9add-41b75308fad4", null, "Admin", "ADMIN" }
+                    { "51697999-6185-4d58-ab7a-536a7bf158ea", null, "User", "USER" },
+                    { "d976a669-5484-4b1a-b07b-289db0c1d32f", null, "Admin", "ADMIN" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -346,9 +350,9 @@ namespace Wandermate.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_DestinationBooking_DestinationId",
+                name: "IX_DestinationBooking_Id",
                 table: "DestinationBooking",
-                column: "DestinationId");
+                column: "Id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_DestinationReviews_DestinationId",
@@ -356,14 +360,14 @@ namespace Wandermate.Migrations
                 column: "DestinationId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_HotelReviews_HotelsHotelId",
+                name: "IX_HotelReviews_HotelsId",
                 table: "HotelReviews",
-                column: "HotelsHotelId");
+                column: "HotelsId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_RoomReviews_RoomsRoomId",
+                name: "IX_RoomReviews_RoomsId",
                 table: "RoomReviews",
-                column: "RoomsRoomId");
+                column: "RoomsId");
         }
 
         /// <inheritdoc />

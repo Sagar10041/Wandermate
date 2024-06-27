@@ -13,8 +13,8 @@ using Wandermate.Data;
 namespace Wandermate.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240626055257_imgesggg")]
-    partial class imgesggg
+    [Migration("20240626091553_someChanges")]
+    partial class someChanges
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -54,13 +54,13 @@ namespace Wandermate.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "ac7de87c-eca4-4f6e-9c10-747f4410223c",
+                            Id = "d976a669-5484-4b1a-b07b-289db0c1d32f",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "edeae980-bbfe-40dd-9244-477047c11ef1",
+                            Id = "51697999-6185-4d58-ab7a-536a7bf158ea",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -238,11 +238,11 @@ namespace Wandermate.Migrations
 
             modelBuilder.Entity("Wandermate.Models.Destination", b =>
                 {
-                    b.Property<int>("DestinationId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("DestinationId"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -268,7 +268,7 @@ namespace Wandermate.Migrations
                     b.Property<bool>("ReserveNow")
                         .HasColumnType("boolean");
 
-                    b.HasKey("DestinationId");
+                    b.HasKey("Id");
 
                     b.ToTable("Destination");
                 });
@@ -278,12 +278,12 @@ namespace Wandermate.Migrations
                     b.Property<string>("AppUserId")
                         .HasColumnType("text");
 
-                    b.Property<int>("DestinationId")
+                    b.Property<int>("Id")
                         .HasColumnType("integer");
 
-                    b.HasKey("AppUserId", "DestinationId");
+                    b.HasKey("AppUserId", "Id");
 
-                    b.HasIndex("DestinationId");
+                    b.HasIndex("Id");
 
                     b.ToTable("DestinationBooking");
                 });
@@ -300,6 +300,9 @@ namespace Wandermate.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<int?>("DestinationId")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("Id")
                         .HasColumnType("integer");
 
                     b.Property<int>("Rating")
@@ -327,10 +330,10 @@ namespace Wandermate.Migrations
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int?>("HotelId")
+                    b.Property<int?>("HotelsId")
                         .HasColumnType("integer");
 
-                    b.Property<int?>("HotelsHotelId")
+                    b.Property<int?>("Id")
                         .HasColumnType("integer");
 
                     b.Property<int>("Rating")
@@ -342,18 +345,18 @@ namespace Wandermate.Migrations
 
                     b.HasKey("ReviewId");
 
-                    b.HasIndex("HotelsHotelId");
+                    b.HasIndex("HotelsId");
 
                     b.ToTable("HotelReviews");
                 });
 
             modelBuilder.Entity("Wandermate.Models.Hotels", b =>
                 {
-                    b.Property<int>("HotelId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("HotelId"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -379,7 +382,7 @@ namespace Wandermate.Migrations
                     b.Property<bool>("ReserveNow")
                         .HasColumnType("boolean");
 
-                    b.HasKey("HotelId");
+                    b.HasKey("Id");
 
                     b.ToTable("Hotels");
                 });
@@ -395,6 +398,9 @@ namespace Wandermate.Migrations
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<int?>("Id")
+                        .HasColumnType("integer");
+
                     b.Property<int>("Rating")
                         .HasColumnType("integer");
 
@@ -402,26 +408,23 @@ namespace Wandermate.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int?>("RoomId")
-                        .HasColumnType("integer");
-
-                    b.Property<int?>("RoomsRoomId")
+                    b.Property<int?>("RoomsId")
                         .HasColumnType("integer");
 
                     b.HasKey("ReviewId");
 
-                    b.HasIndex("RoomsRoomId");
+                    b.HasIndex("RoomsId");
 
                     b.ToTable("RoomReviews");
                 });
 
             modelBuilder.Entity("Wandermate.Models.Rooms", b =>
                 {
-                    b.Property<int>("RoomId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("RoomId"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<int>("Beds")
                         .HasColumnType("integer");
@@ -433,7 +436,7 @@ namespace Wandermate.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.HasKey("RoomId");
+                    b.HasKey("Id");
 
                     b.ToTable("Rooms");
                 });
@@ -499,7 +502,7 @@ namespace Wandermate.Migrations
 
                     b.HasOne("Wandermate.Models.Destination", "Destination")
                         .WithMany("DestinationBookings")
-                        .HasForeignKey("DestinationId")
+                        .HasForeignKey("Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -521,7 +524,7 @@ namespace Wandermate.Migrations
                 {
                     b.HasOne("Wandermate.Models.Hotels", "Hotels")
                         .WithMany("HotelReviews")
-                        .HasForeignKey("HotelsHotelId");
+                        .HasForeignKey("HotelsId");
 
                     b.Navigation("Hotels");
                 });
@@ -530,7 +533,7 @@ namespace Wandermate.Migrations
                 {
                     b.HasOne("Wandermate.Models.Rooms", "Rooms")
                         .WithMany("RoomReviews")
-                        .HasForeignKey("RoomsRoomId");
+                        .HasForeignKey("RoomsId");
 
                     b.Navigation("Rooms");
                 });

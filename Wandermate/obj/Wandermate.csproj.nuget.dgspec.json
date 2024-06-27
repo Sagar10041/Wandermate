@@ -1,6 +1,23 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
+    "D:\\Web Development\\IIC\\IIC Enrichment 2024\\WanderMate-Backend\\Wandermate\\Wandermate\\Wandermate.csproj": {}
+  },
+  "projects": {
+    "D:\\Web Development\\IIC\\IIC Enrichment 2024\\WanderMate-Backend\\Wandermate\\Wandermate\\Wandermate.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Web Development\\IIC\\IIC Enrichment 2024\\WanderMate-Backend\\Wandermate\\Wandermate\\Wandermate.csproj",
+        "projectName": "Wandermate",
+        "projectPath": "D:\\Web Development\\IIC\\IIC Enrichment 2024\\WanderMate-Backend\\Wandermate\\Wandermate\\Wandermate.csproj",
+        "packagesPath": "C:\\Users\\sonam\\.nuget\\packages\\",
+        "outputPath": "D:\\Web Development\\IIC\\IIC Enrichment 2024\\WanderMate-Backend\\Wandermate\\Wandermate\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\sonam\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+=======
     "/Users/sagar_xeetree/Webapp/Wandermate/Wandermate.csproj": {}
   },
   "projects": {
@@ -15,11 +32,14 @@
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/sagar_xeetree/.nuget/NuGet/NuGet.Config"
+>>>>>>> 44161a12dad66c7b10fb48e6f52434a9e6bd4c26
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -115,7 +135,11 @@
               "privateAssets": "all"
             }
           },
+<<<<<<< HEAD
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+=======
           "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.302/PortableRuntimeIdentifierGraph.json"
+>>>>>>> 44161a12dad66c7b10fb48e6f52434a9e6bd4c26
         }
       }
     }
