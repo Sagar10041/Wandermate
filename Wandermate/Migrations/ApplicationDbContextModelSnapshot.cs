@@ -51,13 +51,13 @@ namespace Wandermate.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "852437cd-2662-4166-bb27-bad06f1229ee",
+                            Id = "d2820757-4fdc-40ca-af0b-e9bb93355520",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "0e72f553-7800-4660-88d3-200f2c6ad08f",
+                            Id = "8b64de43-c94b-4835-af7e-2ff286196de2",
                             Name = "User",
                             NormalizedName = "USER"
                         });
